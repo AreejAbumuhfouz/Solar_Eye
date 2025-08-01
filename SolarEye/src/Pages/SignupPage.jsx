@@ -28,7 +28,7 @@ const SignupPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', formData);
+      const response = await axios.post('https://solar-eye.onrender.com/api/auth/signup', formData);
 
       navigate("/login");
     } catch (err) {
