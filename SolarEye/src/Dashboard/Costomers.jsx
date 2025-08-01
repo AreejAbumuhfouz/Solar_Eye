@@ -13,7 +13,7 @@ const Costumers = () => {
     const fetchUsers = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('http://localhost:10000/api/users');
+        const response = await axios.get('https://solar-eye.onrender.com/api/users');
         setUsers(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -28,7 +28,7 @@ const Costumers = () => {
   // Approve user
   const approveUser = async (id) => {
     try {
-      await axios.put(`http://localhost:10000/api/users/${id}/approve`, { message });
+      await axios.put(`https://solar-eye.onrender.com/api/users/${id}/approve`, { message });
       setUsers(users.map(user => 
         user._id === id 
           ? { ...user, isApproved: true, lastAction: 'approved' } 
@@ -43,7 +43,7 @@ const Costumers = () => {
   // Disapprove user
   const disapproveUser = async (id) => {
     try {
-      await axios.put(`http://localhost:10000/api/users/${id}/disapprove`, { message });
+      await axios.put(`https://solar-eye.onrender.com/api/users/${id}/disapprove`, { message });
       setUsers(users.map(user => 
         user._id === id 
           ? { ...user, isApproved: false, lastAction: 'disapproved' } 
