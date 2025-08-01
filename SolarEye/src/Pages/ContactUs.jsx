@@ -26,7 +26,7 @@ const ContactUs = () => {
 
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
- const apiUrl = process.env.REACT_APP_API_URL;
+  // const apiUrl = process.env.REACT_APP_API_URL;
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -41,7 +41,7 @@ const ContactUs = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${apiUrl}/api/contact`, {
+      const response = await fetch(`https://solar-eye.onrender.com/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
