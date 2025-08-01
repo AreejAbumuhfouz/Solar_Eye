@@ -5,7 +5,7 @@ import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
 import ContactUs from "./Pages/ContactUs";
 import OurStory from "./Pages/OurStory";
-import FAQPage from "./Pages/FAQ.JSX";
+// import FAQPage from "./Pages/FAQ.JSX";
 import FeaturePage from "./Pages/FeaturePage";
 import OurServices from "./Pages/OurServices";
 import ProfilePage from "./Pages/UserProfile";
@@ -28,7 +28,7 @@ function App() {
            
            <Route path="/our-story" element={<OurStory />} />
            <Route path="/contactus" element={<ContactUs />} />
-           <Route path="/faq" element={<FAQPage />} />
+{/*            <Route path="/faq" element={<FAQPage />} /> */}
            <Route path="/features" element={<FeaturePage />} /> 
            <Route path="/dashboard" element={<SolarEyeDashboard />} /> 
         </Routes>
