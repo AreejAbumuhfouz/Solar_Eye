@@ -32,7 +32,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const response = await axios.post('https://solar-eye.onrender.com/api/auth/login', formData);
       Cookies.set('token', response.data.token, { expires: 1, path: '/' });
       navigate('/');
     } catch (err) {
