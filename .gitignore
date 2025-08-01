@@ -1,2 +1,21 @@
-*.agdai
-MAlonzo/**
+# Node modules (both frontend and backend)
+node_modules/
+solraeye/node_modules/
+server/node_modules/
+
+# Environment variables
+solraeye/.env
+server/.env
+
+# Build folders
+solraeye/build/
+solraeye/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS/Editor files
+.DS_Store
+Thumbs.db
+.vscode/
