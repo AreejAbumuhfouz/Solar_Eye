@@ -11,7 +11,7 @@ export default function Chatbot() {
 
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:5000');
+const ws = new WebSocket('wss://solar-eye.onrender.com');
     setSocket(ws);
   
     ws.onmessage = (event) => {
