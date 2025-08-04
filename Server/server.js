@@ -33,10 +33,27 @@ const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
 // Enable CORS
+// app.use(cors({
+//   origin: 'http://localhost:5173', // Allow your frontend to access WebSocket
+//   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
+//   credentials: true // Allow cookies and credentials to be sent with requests
+// }));
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://www.solareye.info',
+  'https://solareye.info',
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173', // Allow your frontend to access WebSocket
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
-  credentials: true // Allow cookies and credentials to be sent with requests
+  credentials: true
 }));
 
 app.use(session({
