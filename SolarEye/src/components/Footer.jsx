@@ -268,7 +268,7 @@ const ShaheenFooter = () => {
 >
   <p className="text-gray-300 text-l">
     © {new Date().getFullYear()} SolarEye Technologies. All Rights Reserved.
-    Hosted by
+    Services Provided By
     <motion.span
       whileHover={{
         scale: 1.1,
