@@ -196,7 +196,7 @@ const RandomPackages = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get('https://solar-eye.onrender.com/api/services');
+        const response = await axios.get('https://solar-eye.onrender.com/api/random-packages');
         setServices(response.data);
         setFilteredServices(response.data);
       } catch (error) {
