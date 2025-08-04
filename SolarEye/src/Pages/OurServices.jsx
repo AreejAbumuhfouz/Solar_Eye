@@ -198,7 +198,7 @@ const SolarServicesPage = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/services');
+        const response = await axios.get('https://solar-eye.onrender.com/api/services');
         setServices(response.data);
         setFilteredServices(response.data);
       } catch (error) {
