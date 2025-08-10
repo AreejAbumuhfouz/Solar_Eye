@@ -2,8 +2,12 @@
 import React from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
+
 import person from "../assets/person.png"
 const OurStory = () => {
+    const navigate = useNavigate();
+
   // Scroll-based variants
   const fadeInVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -53,7 +57,7 @@ const OurStory = () => {
       {/* Decorative Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200/80 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-200/80 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-14 left-0 w-64 h-64 bg-blue-200/80 rounded-full blur-2xl"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -132,6 +136,8 @@ const OurStory = () => {
               }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-[#185B8D] to-[#4ACEF4] text-white rounded-xl shadow-md hover:bg-[#1F6396] transition group"
+              onClick={() => navigate('/our-story')}
+
             >
               <span>Learn More</span>
               <ArrowRight 
@@ -146,11 +152,11 @@ const OurStory = () => {
             variants={heroImageVariants}
             className="relative"
           >
-            <div className="overflow-hidden rounded-md  shadow-2xl">
+            <div className="overflow-hidden rounded-md shadow-2xl">
               <motion.img
                 src={person}
                 alt="Team working on innovative solutions"
-                className="w-full object-cover"
+                className="w-full h-[500px] object-cover"
                 initial={{ scale: 1.1, opacity: 0 }}
                 whileInView={{ 
                   scale: 1, 

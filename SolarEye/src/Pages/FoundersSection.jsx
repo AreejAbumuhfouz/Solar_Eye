@@ -55,7 +55,7 @@ const FoundersSection = () => {
     >
       <div className="container mx-auto px-6 text-center">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center mb-6 text-[#185B8D]"
+          className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#1C1F2D]"
           initial={{ scale: 0.9, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -71,11 +71,11 @@ const FoundersSection = () => {
           We are four passionate women engineers from Jordan who are transforming solar infrastructure monitoring through innovative drone technology.
         </motion.p>
 
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-4 gap-8 ">
           {founders.map((founder, index) => (
             <motion.div
               key={founder.name}
-              className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl"
+              className="bg-white  rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{
                 opacity: 1,
@@ -100,7 +100,7 @@ const FoundersSection = () => {
                 <h3 className="text-2xl font-bold text-[#185B8D] mb-2">
                   {founder.name}
                 </h3>
-                <p className="text-gray-600 mb-4 h-12 overflow-hidden">{founder.description}</p>
+                <p className="text-gray-600 mb-4 h-24 overflow-hidden">{founder.description}</p>
 
                 <div className="flex justify-between space-x-2">
                   <a

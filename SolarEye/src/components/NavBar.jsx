@@ -7,14 +7,10 @@ import {
   X, 
   Home, 
   BookOpen, 
-  Zap, 
   DollarSign, 
-  HelpCircle, 
   Mail, 
-  LogIn, 
-  UserPlus, 
-  LogOut ,
-  User
+  Wrench,
+  Sparkles
 } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import logo from "../assets/CircleLogo.png";
@@ -23,7 +19,6 @@ const NavBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
 
@@ -44,25 +39,25 @@ const NavBar = () => {
       path: '/our-story' 
     },
     { 
-      name: 'Features', 
-      link: 'features', 
-      icon: Zap, 
-      order: 3, 
-      path: '/features' 
-    },
-    // { 
-    //   name: 'Our Services', 
-    //   link: 'our-services', 
-    //   icon: DollarSign, 
-    //   order: 4, 
-    //   path: '/our-services' 
-    // },
+  name: 'Pricing', 
+  link: 'pricing', 
+  icon: DollarSign, 
+  order: 3, 
+  path: '/pricing' 
+  },
+    {
+  name: 'Services',
+  link: 'services',
+  icon: Wrench,
+  order: 4,
+  path: '/services'
+},
     
     { 
       name: 'Contact', 
       link: 'contactus', 
       icon: Mail, 
-      order: 6, 
+      order: 5, 
       path: '/contactus' 
     }
   ].sort((a, b) => a.order - b.order), []);
@@ -81,12 +76,8 @@ const NavBar = () => {
 
   // Check authentication on component mount
   useEffect(() => {
-    const checkAuth = () => {
-      const token = Cookies.get('token');
-      setIsLoggedIn(!!token);
-    };
+   
 
-    checkAuth();
     window.addEventListener('scroll', handleScroll);
     
     return () => {
@@ -100,17 +91,7 @@ const NavBar = () => {
     setIsMobileMenuOpen(false);
   }, [navigate]);
 
-  // Logout handler with error handling
-  const handleLogout = useCallback(() => {
-    try {
-      Cookies.remove('token');
-      setIsLoggedIn(false);
-      navigate('/');
-    } catch (error) {
-      console.error('Logout failed:', error);
-      // Optionally, add user-friendly error handling
-    }
-  }, [navigate]);
+ 
 
   // Memoized animation variants for performance
   const animationVariants = useMemo(() => ({
@@ -127,14 +108,14 @@ const NavBar = () => {
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolling ? 'bg-[#252B3B] shadow-lg' : 'bg-transparent'}`}
     >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo Section */}
         <motion.div 
-          initial={{ scale: 0.9, opacity: 0 }} 
-          animate={{ scale: 1, opacity: 1 }} 
-          transition={{ type: "spring", stiffness: 300 }} 
-          className="flex items-center space-x-4"
-        >
-          <img 
+  onClick={() => handleNavigation('/')}
+  initial={{ scale: 0.9, opacity: 0 }} 
+  animate={{ scale: 1, opacity: 1 }} 
+  transition={{ type: "spring", stiffness: 300 }} 
+  className="flex items-center space-x-4 cursor-pointer"
+>
+  <img 
             src={logo} 
             alt="SolarSentinel Logo" 
             className="h-10 w-10 md:h-12 md:w-12 rounded-full" 
@@ -142,7 +123,8 @@ const NavBar = () => {
           <span className="text-[#2985B3] text-xl font-bold tracking-wider uppercase">
             SolarEye
           </span>
-        </motion.div>
+</motion.div>
+
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8 items-center">
@@ -152,10 +134,10 @@ const NavBar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleNavigation(item.path)}
-              className={`group flex items-center space-x-2 text-sm font-medium uppercase tracking-wider ${activeLink === item.link ? 'text-[#2985B3]' : 'text-gray-400 hover:text-[#2985B3]'} transition-colors duration-300 relative`}
+              className={`group flex items-center space-x-2 text-sm font-medium uppercase tracking-wider ${activeLink === item.link ? 'text-[#2985B3]' : 'text-gray-200 hover:text-[#2985B3]'} transition-colors duration-300 relative`}
             >
               <item.icon 
-                className={`w-4 h-4 ${activeLink === item.link ? 'text-[#2985B3]' : 'text-gray-500'}`} 
+                className={`w-4 h-4 ${activeLink === item.link ? 'text-[#2985B3]' : 'text-gray-300'}`} 
               />
               <span>{item.name}</span>
               {activeLink === item.link && (
@@ -169,53 +151,42 @@ const NavBar = () => {
         </div>
 
         {/* Authentication Buttons */}
-        <div className="flex items-center space-x-4">
-          {!isLoggedIn ? (
+        <div className="hidden md:flex items-center space-x-4">
+          
             <motion.div 
               initial={{ opacity: 0, x: 50 }} 
               animate={{ opacity: 1, x: 0 }} 
               transition={{ type: "spring", stiffness: 300 }} 
               className="flex space-x-3"
             >
-              <button 
-                className="text-gray-400 flex items-center space-x-2 bg-transparent border border-gray-400 hover:bg-white/10 px-4 py-2 rounded-full text-sm font-medium tracking-wider transition duration-300" 
-                onClick={() => handleNavigation('/login')}
-              >
-                <LogIn className="w-4 h-4" />
-                <span>Login</span>
-              </button>
-              <button 
-                className="text-white flex items-center space-x-2 bg-blue-600/20 border border-blue-600/30 hover:bg-blue-600/30 px-4 py-2 rounded-full text-sm font-medium tracking-wider transition duration-300" 
-                onClick={() => handleNavigation('/signup')}
-              >
-                <UserPlus className="w-4 h-4" />
-                <span>Sign Up</span>
-              </button>
+              
+               <button 
+        className="relative bg-blue-600/20 backdrop-blur-sm border border-[#2985B3]/30 hover:border-[#2985B3] text-white flex items-center space-x-3 px-8 py-4 rounded-xl font-semibold tracking-wide transition-all duration-300 transform   group"
+        onClick={() => handleNavigation('/contactus')}
+      >
+       
+        <div className="relative">
+          <Mail className="w-5 h-5 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" />
+          <Sparkles className="w-3 h-3 absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 animate-pulse transition-opacity duration-300" />
+        </div>
+        
+        {/* Text with gradient effect on hover */}
+        <span className="bg-gradient-to-r from-white to-gray-200  bg-clip-text text-transparent transition-all duration-300">
+          Get in Touch
+        </span>
+        
+        {/* Animated arrow */}
+        <div className="transform group-hover:translate-x-1 transition-transform duration-300">
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </div>
+        
+         </button>
               
             </motion.div>
-          ) : (
-            <div className='flex '>
-
-            {/* <button 
-                className="text-white flex items-center space-x-2 mr-2 bg-blue-600/20 border border-blue-600/30 hover:bg-blue-600/30 px-4 py-2 rounded-full text-sm font-medium tracking-wider transition duration-300" 
-                onClick={() => handleNavigation('/user-profile')}
-              >
-                <User className="w-4 h-4" />
-                <span>Profile</span>
-              </button> */}
-            <motion.button 
-              initial={{ scale: 0.9, opacity: 0 }} 
-              animate={{ scale: 1, opacity: 1 }} 
-              whileHover={{ scale: 1.05 }} 
-              className="text-white flex items-center space-x-2 bg-red-600/20 hover:bg-red-600/30 border border-red-600/30 px-4 py-2 rounded-full text-sm font-medium tracking-wider transition duration-300" 
-              onClick={handleLogout}
-            >
-              <LogOut className="w-4 h-4" />
-              <span>Logout</span>
-            </motion.button>
-            </div>
             
-          )}
+          
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -230,35 +201,60 @@ const NavBar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }} 
-            animate={{ opacity: 1, height: 'auto' }} 
-            exit={{ opacity: 0, height: 0 }} 
-            className="md:hidden bg-[#1a1f2e] px-6 pt-4 pb-6 shadow-lg"
+  {isMobileMenuOpen && (
+    <motion.div 
+      initial={{ opacity: 0, height: 0 }} 
+      animate={{ opacity: 1, height: 'auto' }} 
+      exit={{ opacity: 0, height: 0 }} 
+      className="md:hidden bg-[#1a1f2e] px-6 pt-4 pb-6 shadow-lg flex flex-col space-y-4"
+    >
+      <div className="space-y-4">
+        {navItems.map((item) => (
+          <motion.button
+            key={item.link}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: navItems.findIndex(i => i.link === item.link) * 0.1 }}
+            onClick={() => handleNavigation(item.path)}
+            className={`w-full flex items-center space-x-3 text-left py-3 px-4 rounded-lg text-sm font-medium uppercase tracking-wider transition-colors duration-300 ${activeLink === item.link ? 'bg-white/10 text-[#2985B3]' : 'text-gray-300 hover:bg-white/5 hover:text-white'}`}
           >
-            <div className="space-y-4">
-              {navItems.map((item) => (
-                <motion.button
-                  key={item.link}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navItems.findIndex(i => i.link === item.link) * 0.1 }}
-                  onClick={() => handleNavigation(item.path)}
-                  className={`w-full flex items-center space-x-3 text-left py-3 px-4 rounded-lg text-sm font-medium uppercase tracking-wider transition-colors duration-300 ${activeLink === item.link ? 'bg-white/10 text-#[2985B3]' : 'text-gray-300 hover:bg-white/5 hover:text-white'}`}
-                >
-                  <item.icon 
-                    className={`w-5 h-5 ${activeLink === item.link ? 'text-[#2985B3]' : 'text-gray-500'}`} 
-                  />
-                  <span>{item.name}</span>
-                </motion.button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <item.icon 
+              className={`w-5 h-5 ${activeLink === item.link ? 'text-[#2985B3]' : 'text-gray-500'}`} 
+            />
+            <span>{item.name}</span>
+          </motion.button>
+        ))}
+      </div>
+
+      {/* Get in Touch button at the bottom */}
+      <motion.button 
+        whileTap={{ scale: 0.95 }}
+        onClick={() => handleNavigation('/contactus')}
+        className="relative bg-blue-600/20 backdrop-blur-sm border border-[#2985B3]/30 hover:border-[#2985B3] text-white flex items-center space-x-2 px-4 py-2 rounded-full font-semibold tracking-wide transition-all duration-300 mt-4"
+      >
+        
+        <div className="relative">
+          <Mail className="w-5 h-5 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" />
+          <Sparkles className="w-3 h-3 absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 animate-pulse transition-opacity duration-300" />
+        </div>
+        
+        {/* Text with gradient effect on hover */}
+        <span className="bg-gradient-to-r from-white to-gray-200  bg-clip-text text-transparent transition-all duration-300">
+          Get in Touch
+        </span>
+        
+        {/* Animated arrow */}
+        <div className="transform group-hover:translate-x-1 transition-transform duration-300">
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </div>
+      </motion.button>
+    </motion.div>
+  )}
+</AnimatePresence>
+
     </motion.nav>
   );
 };

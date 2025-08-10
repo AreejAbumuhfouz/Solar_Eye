@@ -3,10 +3,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Satellite, SunDim, RepeatIcon, ShieldCheck } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const SolarDroneRepairHero = () => {
   const [isHovered, setIsHovered] = useState(false);
-
+  const navigate = useNavigate();
+  
   return (
     <div className="relative min-h-screen w-full pt-8  bg-gradient-to-br from-[#272D3F] via-[#232838] to-[#226F9E] overflow-hidden">
       {/* Animated Background Particles */}
@@ -77,14 +79,16 @@ const SolarDroneRepairHero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-[#226F9E] px-8 py-3 rounded-full font-bold shadow-2xl hover:bg-blue-50 transition"
+              className="bg-white text-[#226F9E] px-8 py-3 rounded-xl font-bold shadow-2xl hover:bg-blue-50 transition"
+              onClick={() => navigate('/contactus')}
             >
               Get Started
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-white/50 text-white px-8 py-3 rounded-full font-bold hover:bg-white/10 transition"
+              className="border-2 border-white/50 text-white px-8 py-3 rounded-xl font-bold hover:bg-white/10 transition"
+           onClick={() => navigate('/pricing')}
             >
               Learn More
             </motion.button>

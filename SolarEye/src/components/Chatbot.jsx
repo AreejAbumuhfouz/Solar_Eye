@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, X } from 'lucide-react';
+import {  X } from 'lucide-react';
 import Logo from "../assets/ASK.png";
 
 export default function Chatbot() {
@@ -38,7 +38,7 @@ const ws = new WebSocket('wss://solar-eye.onrender.com');
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+<div className="hidden sm:block fixed bottom-4 right-4 z-50">
 
 {!isOpen && (
   <button

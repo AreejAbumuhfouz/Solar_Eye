@@ -3,10 +3,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Twitter, Linkedin, Instagram, MapPin, Phone, ChevronRight } from 'lucide-react';
+import { Mail, Twitter, Linkedin, Instagram, MapPin, Phone, ChevronRight, Facebook, Youtube } from 'lucide-react';
 import Logo from "../assets/CircleLogo.png";
 
-const ShaheenFooter = () => {
+const Footer = () => {
   // Variants for staggered animations
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -36,22 +36,29 @@ const ShaheenFooter = () => {
   };
 
   const socialLinks = [
-    { 
-      icon: Twitter, 
-      href: "https://twitter.com/shaheen",
-      color: "#1DA1F2",
-      name: "Twitter"
-    },
+   
     { 
       icon: Linkedin, 
-      href: "https://linkedin.com/company/shaheen",
+      href: "https://solareye.info",
       color: "#0077B5",
       name: "LinkedIn"
     },
     { 
       icon: Instagram, 
-      href: "https://instagram.com/shaheen",
+      href: "https://solareye.info",
       color: "#E4405F",
+      name: "Instagram"
+    },
+    { 
+      icon: Facebook, 
+      href: "https://solareye.info",
+      color: "#1220e7ff",
+      name: "Instagram"
+    },
+    { 
+      icon: Youtube, 
+      href: "https://solareye.info",
+      color: "#ac0909ff",
       name: "Instagram"
     },
   ];
@@ -59,17 +66,17 @@ const ShaheenFooter = () => {
   const footerNavigation = [
     { name: "Home", href: "/" },
     { name: "Our Story", href: "/our-story" },
-    { name: "Features", href: "/features" },
-    { name: "FAQ", href: "/faq" },
+    { name: "Pricing", href: "/pricing" },
+    { name: "Services", href: "/services" },
     { name: "Contact Us", href: "/contactus" },
   ];
 
   const serviceCategories = [
-    "Drone Technology",
-    "Optical Sensors",
-    "Solar Solutions",
-    "AI & Machine Learning",
-    "Innovative Design"
+    "AI-Powered Solar Inspections",
+    "Real-Time Performance Monitoring",
+    "Predictive Maintenance Solutions",
+    "AAdvanced Analytics & Reporting",
+    "Solar Optimization Consulting"
   ];
   
   return (
@@ -218,19 +225,25 @@ const ShaheenFooter = () => {
                 {
                   icon: Mail,
                   iconColor: "text-blue-500",
-                  content: "support@SolarEye.com",
-                  href: "mailto:info@SolarEye.com"
+                  content: "info@SolarEye.info",
+                  href: "mailto:info@SolarEye.info"
                 },
+                // {
+                //   icon: Phone,
+                //   iconColor: "text-green-500",
+                //   content: "+1 (555) 123-4567"
+                // },
                 {
-                  icon: Phone,
-                  iconColor: "text-green-500",
-                  content: "+1 (555) 123-4567"
-                },
-                {
-                  icon: MapPin,
-                  iconColor: "text-red-500 ",
-                  content: "123 Tech Avenue, Innovation Park, Silicon Valley, CA 94000"
-                }
+  icon: MapPin,
+  iconColor: "text-red-500",
+  content: "Head Office: Dubai"
+},
+{
+  icon: MapPin,
+  iconColor: "text-red-500",
+  content: "Marketing Offices: Germany, Qatar, and Jordan"
+}
+
               ].map((contact, index) => (
                 <motion.div
                   key={index}
@@ -296,4 +309,4 @@ const ShaheenFooter = () => {
   );
 };
 
-export default ShaheenFooter;
+export default Footer;

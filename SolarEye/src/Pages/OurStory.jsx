@@ -47,16 +47,9 @@ const OurStory = () => {
 
       {/* Hero Section */}
       <motion.div 
-        className="relative  flex items-center justify-center overflow-hidden  px-12 pb-20 pt-32 mb-12 text-center "
+        className="relative bg-gradient-to-br from-[#272D3F] via-[#232838] to-[#226F9E] flex items-center justify-center overflow-hidden  px-12 pb-20 pt-32 mb-12 text-center "
       >
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center "
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
-            filter: 'brightness(.6) saturate(1.2)'
-          }}
-        />
+        
         
         <motion.div 
           variants={containerVariants}
@@ -64,7 +57,6 @@ const OurStory = () => {
         >
           <div className="flex items-center justify-center mb-8 space-x-4">
     
-    <Book className="w-16 h-16 text-white" />
           <motion.h1 
             variants={itemVariants}
             className="text-4xl font-bold mb-2 "

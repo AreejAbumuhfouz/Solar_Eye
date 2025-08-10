@@ -81,18 +81,17 @@ const ContactUs = () => {
               <motion.div 
         initial={{ y: -50, opacity: 0 }} 
         animate={{ y: 0, opacity: 1 }} 
-        className="bg-gradient-to-r from-[#272D3F] to-[#185B8D] text-white px-12 pb-20 pt-32 mb-12 text-center"
+        className="bg-gradient-to-br from-[#272D3F] via-[#232838] to-[#226F9E] text-white px-12 pb-20 pt-32 mb-12 text-center"
       >
         {/* Heading and Icon */}
         <div className="flex items-center justify-center mb-8 space-x-4">
-          <Satellite className="w-16 h-16 text-white" />
-          <h1 className="text-4xl font-bold mb-4">Get in Touch with <span className="text-[#272D3F]">SolarEye</span>
+          <h1 className="text-4xl font-bold mb-4">Get in Touch with <span className="text-[#226F9E]">SolarEye</span>
           </h1>
         </div>
         
       
         {/* Subheading */}
-        <p className="text-xl max-w-2xl mx-auto">
+        <p className="text-xl max-w-2xl mx-auto text-gray-200">
         Have questions about our AI drone services for solar panel optimization? Our team is ready to help you maximize your solar investment.        </p>
       </motion.div>
       
@@ -100,7 +99,7 @@ const ContactUs = () => {
         <div className="container mx-auto px-4">
           
 
-          <div className="w-full max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="w-full  max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 ">
             {/* Left Column - Contact Information */}
             <div className="bg-gradient-to-br from-[#1c202c] to-[#1a2a3d] text-white p-8 md:p-12 flex flex-col justify-center relative overflow-hidden rounded-2xl shadow-lg">
               {/* Background elements */}
@@ -133,7 +132,7 @@ const ContactUs = () => {
                     <div>
                       <h3 className="font-semibold text-lg">Email Us</h3>
                       <p className="text-gray-300 mt-1">
-                        support@SolarEye.com
+                        info@SolarEye.info
                       </p>
                     </div>
                   </div>
@@ -173,7 +172,7 @@ const ContactUs = () => {
             </div>
 
             {/* Right Column - Contact Form */}
-            <div className="p-8 md:p-12 bg-white rounded-2xl shadow-lg">
+            <div className="p-8 md:p-12 bg-white rounded-2xl shadow-lg border border-2 border-[#1c202c]">
               <h2 className="text-2xl font-semibold text-[#2485B6] mb-6">
                 Send Us a Message
               </h2>

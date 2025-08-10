@@ -1,236 +1,256 @@
 
+import React, { useState } from 'react';
+import { ChevronRight, Mail, Phone, Calendar, CheckCircle, Star, Users, Award, ArrowRight } from 'lucide-react';
 
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import {  Sun, Battery, Zap, ChevronRight } from 'lucide-react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-const CallToAction = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Enhanced parallax effects for tech feel
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 0.9], [0, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 1.05]);
-
-  // State management
+const CallToActionSection = () => {
   const [email, setEmail] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-    if (errorMessage) setErrorMessage('');
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
+  if (!email.trim()) {
+    setError('Email is required');
+    return;
+  }
+  
+  if (!validateEmail(email)) {
+    setError('Please enter a valid email address');
+    return;
+  }
 
-    if (!email) {
-      setErrorMessage('Email is required');
+  setIsSubmitting(true);
+  setError('');
+  setIsSuccess(false);
+
+  try {
+    const response = await fetch('https://solar-eye.onrender.com/api/newsletter/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setError(data.error || 'Subscription failed');
+      setIsSubmitting(false);
       return;
     }
 
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
-      setErrorMessage('Please enter a valid email address');
-      return;
-    }
+    setIsSuccess(true);
+    setEmail('');
+  } catch (err) {
+    setError('Network error. Please try again.');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
-    try {
-      const response = await fetch('/api/email/save-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        toast.success('Thank you! Our drone specialists will contact you shortly.');
-        setEmail('');
-      } else {
-        setErrorMessage(data.message || 'Error saving email');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      setErrorMessage('Connection error. Please try again later.');
-    }
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    if (error) setError('');
+    if (isSuccess) setIsSuccess(false);
   };
 
   return (
-    <motion.section
-      ref={containerRef}
-      className="relative overflow-hidden py-24 bg-gradient-to-br from-[#0A2F51] to-[#1A1A2E] text-white"
-      style={{ opacity, scale }}
-    >
-      {/* Tech-inspired background elements */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{ y: backgroundY }}
-      >
-        {/* Solar panel grid pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="grid grid-cols-8 grid-rows-8 h-full">
-            {Array(64).fill().map((_, i) => (
-              <div key={i} className="border border-white/20"></div>
-            ))}
-          </div>
-        </div>
-        
-        {/* Glowing elements representing drones/solar energy */}
-        <div className="absolute top-20 left-20 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-40 right-20 w-80 h-80 bg-yellow-400/20 rounded-full blur-3xl animate-pulse delay-500"></div>
-        <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-cyan-400/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
-      </motion.div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Icon representing drone + solar technology */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{
-              opacity: 1,
-              scale: 1,
-              transition: { duration: 0.8, type: "spring" }
-            }}
-            viewport={{ once: true }}
-            className="flex justify-center mb-6"
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-blue-500 rounded-full blur-md"></div>
-              <div className="relative bg-white/10 backdrop-blur-sm p-4 rounded-full border border-white/30">
-                {/* <Drone size={40} className="text-white" /> */}
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.8, ease: "easeOut" },
-            }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-          >
-            AI-Powered Drone Diagnostics for Solar Optimization
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.8, delay: 0.2, ease: "easeOut" },
-            }}
-            viewport={{ once: true }}
-            className="text-xl text-white/80 mb-8 max-w-3xl mx-auto"
-          >
-            Our autonomous drones use thermal imaging and AI analytics to identify panel defects, optimize placement, and increase energy output by up to 27%.
-          </motion.p>
-
-          {/* Benefits cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.8, delay: 0.3, ease: "easeOut" },
-            }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12"
-          >
-            {[
-              { icon: <Sun size={24} />, title: "Thermal Detection", text: "Identify hotspots & defects" },
-              // { icon: <Drone size={24} />, title: "Autonomous Inspection", text: "Fast & accurate scans" },
-              { icon: <Zap size={24} />, title: "27% More Efficient", text: "Maximize energy output" }
-            ].map((item, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-                <div className="flex items-center justify-center mb-2 text-cyan-400">
-                  {item.icon}
-                </div>
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-                <p className="text-white/70 text-sm">{item.text}</p>
-              </div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{
-              opacity: 1,
-              scale: 1,
-              transition: {
-                duration: 0.8,
-                delay: 0.4,
-                type: "spring",
-                stiffness: 100,
-              },
-            }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-white/20"
-          >
-            <div className="max-w-xl mx-auto">
-              <h3 className="text-2xl font-bold mb-6">Schedule Your Drone Analysis</h3>
-              
-              {/* Email Input with tech styling */}
-              <div className="flex items-center bg-white/10 rounded-full p-2 mb-6 border border-white/20 focus-within:border-cyan-400 transition-colors">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={handleEmailChange}
-                  placeholder="Enter your email for a free site assessment"
-                  className="flex-grow bg-transparent px-4 py-3 text-white placeholder-white/50 focus:outline-none"
-                  aria-label="Email address"
-                />
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={handleSubmit}
-                  className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full p-3 flex items-center justify-center"
-                  aria-label="Submit email"
-                >
-                  {/* <Drone size={20} /> */}
-                </motion.button>
-              </div>
-
-              {/* Error message */}
-              {errorMessage && <div className="text-red-400 text-sm mb-4">{errorMessage}</div>}
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center space-x-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition"
-                >
-                  <span>Book Drone Inspection</span>
-                  <ChevronRight size={20} />
-                </motion.button>
-
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 border border-cyan-400/30 text-white rounded-full hover:bg-white/10 transition"
-                >
-                  View Demo Flight
-                </motion.button>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+    <section className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        {/* Animated Grid */}
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }}
+        />
+        {/* bg-gradient-to-r from-[#185B8D] to-[#4ACEF4] */}
+        {/* Glowing Orbs */}
+        <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-500" />
       </div>
 
-      {/* Toast Container */}
-      <ToastContainer position="top-right" autoClose={3000} hideProgressBar theme="dark" />
-    </motion.section>
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        {/* Social Proof Bar */}
+        {/* <div className="text-center mb-12">
+          <div className="inline-flex items-center space-x-6 bg-white/10 backdrop-blur-sm rounded-full px-8 py-4 border border-white/20">
+            <div className="flex items-center space-x-2">
+              <Users className="w-5 h-5 text-blue-400" />
+              <span className="text-white font-semibold">2,500+</span>
+              <span className="text-slate-300 text-sm">Happy Clients</span>
+            </div>
+            <div className="w-px h-6 bg-white/20" />
+            <div className="flex items-center space-x-2">
+              <Star className="w-5 h-5 text-yellow-400 fill-current" />
+              <span className="text-white font-semibold">4.9/5</span>
+              <span className="text-slate-300 text-sm">Rating</span>
+            </div>
+            <div className="w-px h-6 bg-white/20" />
+            <div className="flex items-center space-x-2">
+              <Award className="w-5 h-5 text-green-400" />
+              <span className="text-slate-300 text-sm">Industry Leader</span>
+            </div>
+          </div>
+        </div> */}
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="text-white">
+            <div className="mb-6">
+              <span className="inline-block px-4 py-2 bg-blue-500/20 text-blue-300 rounded-full text-sm font-semibold mb-4">
+                Limited Time Offer
+              </span>
+              <h2 className="text-4xl lg:text-5xl font-bold leading-tight mb-6">
+                Ready to Transform Your
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+                  Solar Performance?
+                </span>
+              </h2>
+              <p className="text-xl text-slate-300 leading-relaxed mb-8">
+                Join thousands of satisfied customers who've increased their solar efficiency by up to 27% 
+                with our AI-powered drone diagnostics. Get your free consultation today.
+              </p>
+            </div>
+
+            {/* Benefits List */}
+            <div className="space-y-4 mb-8">
+              {[
+                "Free comprehensive site analysis worth $500",
+                "Custom optimization report within 24 hours", 
+                "No upfront costs or commitments required",
+                "Guaranteed ROI or money-back promise"
+              ].map((benefit, index) => (
+                <div key={index} className="flex items-center space-x-3">
+                  <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
+                  <span className="text-slate-200">{benefit}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Urgency Element */}
+            <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 rounded-xl p-4 mb-8">
+              <div className="flex items-center space-x-3">
+                <div className="w-3 h-3 bg-orange-500 rounded-full animate-pulse" />
+                <span className="text-orange-300 font-semibold">
+                  Only 12 free assessments left this month
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right CTA Form */}
+          <div className="relative">
+            <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl">
+              {isSuccess ? (
+                // Success State
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle className="w-8 h-8 text-green-400" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">Thank You!</h3>
+                  <p className="text-slate-300 mb-6">
+                    We've received your request. Our drone specialists will contact you within 2 hours to schedule your free site assessment.
+                  </p>
+                  <div className="bg-blue-500/20 border border-blue-500/30 rounded-xl p-4">
+                    <p className="text-blue-300 text-sm">
+                      Check your email for confirmation and next steps
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                // Form State
+                <>
+                  <div className="text-center mb-8">
+                    <h3 className="text-2xl font-bold text-white mb-3">
+                      Get Your Free Solar Analysis
+                    </h3>
+                    <p className="text-slate-300">
+                      No obligation • Results in 24 hours • 100% confidential
+                    </p>
+                  </div>
+
+                  {/* Email Input */}
+                  <div className="space-y-4 mb-6">
+                    <div className="relative">
+                      <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={handleEmailChange}
+                        placeholder="Enter your email address"
+                        className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50 transition-all"
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                    
+                    {error && (
+                      <p className="text-red-400 text-sm flex items-center space-x-2">
+                        <span>⚠️</span>
+                        <span>{error}</span>
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Primary CTA Button */}
+                  <button
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none transition-all duration-200 mb-4"
+                  >
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center space-x-3">
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+                        <span>Processing...</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-center space-x-3">
+                        <span>Get My Free Analysis Now</span>
+                        <ArrowRight className="w-5 h-5" />
+                      </div>
+                    )}
+                  </button>
+
+                
+                  <div className="text-center pt-4 border-t border-white/10">
+                    <div className="flex justify-center items-center space-x-4 text-slate-400 text-sm">
+                      <div className="flex items-center space-x-1">
+                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <span>100% Free</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <span>No Spam</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <span>Secure</span>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Floating Badge */}
+            <div className="absolute -top-4 -right-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg animate-bounce">
+              Save $300
+            </div>
+          </div>
+        </div>
+
+       
+      </div>
+    </section>
   );
 };
 
-export default CallToAction;
+export default CallToActionSection;

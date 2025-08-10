@@ -14,6 +14,7 @@ const paymentRoutes = require('./Routes/paymentRoutes');
 const paypalRoutes = require("./Routes/paymentRoutes");
 const order = require('./Routes/orderRoutes');
 const chatRoutes = require("./Routes/chatRoutes");
+const newsletterRoutes = require('./Routes/newsletter');
 
 const cron = require('node-cron');
 const http = require('http');
@@ -32,12 +33,7 @@ const server = http.createServer(app);
 // WebSocket server setup
 const wss = new WebSocketServer({ server });
 
-// Enable CORS
-// app.use(cors({
-//   origin: 'http://localhost:5173', // Allow your frontend to access WebSocket
-//   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
-//   credentials: true // Allow cookies and credentials to be sent with requests
-// }));
+
 const allowedOrigins = [
   'http://localhost:5173',
   'https://www.solareye.info',
@@ -82,6 +78,7 @@ app.use('/api', profile);
 app.use('/api', paymentRoutes);
 app.use('/api', chatRoutes);
 app.use('/api/chatbot', chatbotRoutes);
+app.use('/api/newsletter', newsletterRoutes);
 
 // A protected route example
 app.get('/api/protected', authMiddleware, (req, res) => {

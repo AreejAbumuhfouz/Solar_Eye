@@ -1,17 +1,11 @@
-
 import HeroSection from "./HeroSection";
-import SolarDroneHomepage from "./OurStory";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import CallToAction from "./CallToAction";
-import TechnologyStackSection from "./TechnologyStack";
 import Features from "./Features";
-import AdditionalSections from "./Add";
-import Testimonials from "./Testimonials";
 import OurStory from "./OurStory";
-import RandomPackages from "./RandomPackages";
 import HowItWorks from "./HowItWorks";
-// import Chatbot from "../ChatBot/Chatbot"; // Importing Chatbot Component
+import Services from "./Services";
 
 export default function Home() {
   return (
@@ -19,16 +13,11 @@ export default function Home() {
       <NavBar />
       <HeroSection />
       <OurStory />
-      <RandomPackages />
-      <Features />
+      <Services />
       <HowItWorks />
-      {/* <CallToAction /> */}
-      {/* <AdditionalSections/> */}
-      {/* <TechnologyStackSection/> */}
-      {/* <Testimonials/> */}
+      {/* <Features /> */}
+      <CallToAction />
       <Footer />
-
-     
     </div>
   );
 }

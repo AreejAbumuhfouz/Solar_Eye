@@ -1,39 +1,26 @@
 import React, { useState } from 'react';
 import { 
   Home, 
-  Users, 
-  ShoppingCart, 
-  CreditCard, 
-  Menu ,MessageSquare
+  Menu 
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import OverviewPage from './OverView';
-import Billing from './Billing';
-import Costomers from './Costomers';
-import Orders from './Orders';
-import AdminChatPage from './ChatBotAdmin';
+import Newsletter from "./Newsletter"
 const SolarEyeDashboard = () => {
   const [activePage, setActivePage] = useState('overview');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const navigationItems = [
     { icon: <Home className="w-5 h-5" />, label: 'Overview', page: 'overview' },
-    { icon: <Users className="w-5 h-5" />, label: 'Customers', page: 'customers' },
-    { icon: <ShoppingCart className="w-5 h-5" />, label: 'Orders', page: 'orders' },
-    { icon: <CreditCard className="w-5 h-5" />, label: 'Billing', page: 'billing' },
-    { 
-      icon: <MessageSquare className="w-5 h-5" />, 
-      label: 'Admin Chat', 
-      page: 'AdminChatPage' 
-    },  ];
+    { icon: <Newsletter className="w-5 h-5" />, label: 'News Letter', page: 'Newsletter' },
+    
+  
+  ];
 
   const renderPageContent = () => {
     switch (activePage) {
       case 'overview': return <OverviewPage />;
-      case 'customers': return <Costomers />;
-      case 'orders': return <Orders />;
-      case 'billing': return <Billing />;
-      case 'AdminChatPage': return <AdminChatPage />;
+      case 'Newsletter': return <Newsletter />;
       default: return null;
     }
   };
