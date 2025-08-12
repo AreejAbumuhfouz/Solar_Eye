@@ -16,7 +16,7 @@ const SolarDroneRepairHero = () => {
   return (
     <div className="relative min-h-screen w-full pt-8  bg-gradient-to-br from-[#272D3F] via-[#232838] to-[#226F9E] overflow-hidden">
        <SEOHead
-        title="Solar Drone Repair & Maintenance - SolarEye"
+        title="SolarEye - We Solve It Before You See It!"
         description="Professional solar drone repair, maintenance, and optimization services. Keep your solar inspection equipment in peak condition with SolarEye."
         keywords="drone repair, solar inspection drone service, drone maintenance solar, PV inspection drone"
         canonicalUrl="https://solareye.info/drone-repair"
