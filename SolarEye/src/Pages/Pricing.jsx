@@ -127,7 +127,7 @@ const containerVariants = {
       <NavBar/>
 
         <SEOHead
-        title="Solar Inspection Pricing Plans | SolarEye"
+        title="SolarEye Pricing Plans - We Solve It Before You See It!"
         description="Choose from our flexible pricing plans for solar inspections, AI diagnostics, and predictive maintenance. From small installations to large solar farms."
         keywords="solar inspection pricing, solar panel maintenance cost, drone inspection plans, AI diagnostics solar"
         canonicalUrl="https://solareye.info/pricing"
