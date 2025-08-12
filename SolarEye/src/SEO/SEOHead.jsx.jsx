@@ -28,7 +28,7 @@ export function SEOHead({
 
     
       {/* Favicon */}
-      <link rel="icon" href="/CircleLogo.png" />
+      <link rel="icon" href="../assets/CircleLogo.png" />
     </Helmet>
   );
 }
