@@ -2,8 +2,8 @@
 import { Helmet } from "react-helmet-async";
 
 export function SEOHead({
-  title = "SolarEye - AI Drone Solar Panel Inspection Services",
-  description = "Professional drone AI inspection services for solar farms.",
+    title = "SolarEye - We Solve It Before You See It!",
+  description = "We Solve It Before You See It! Pioneering AI-driven solar infrastructure monitoring for a brighter future.",
   keywords = "solar panel inspection, drone inspection, AI solar analysis, thermal imaging",
   canonicalUrl = "https://solareye.info"
 }) {
@@ -26,15 +26,9 @@ export function SEOHead({
       <meta property="og:description" content={description} />
       <meta property="og:image" content="https://solareye.info/og-image.jpg" />
 
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={canonicalUrl} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content="https://solareye.info/twitter-image.jpg" />
-
+    
       {/* Favicon */}
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/CircleLogo.png" />
     </Helmet>
   );
 }
