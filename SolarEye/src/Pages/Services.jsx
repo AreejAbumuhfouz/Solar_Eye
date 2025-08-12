@@ -355,7 +355,8 @@ const Services = () => {
               <NavBar />
 
               <SEOHead 
-        title="Solar Inspection Services - Drone AI Analysis | SolarEye"
+                title="SolarEye Services - We Solve It Before You See It!"
+
         description="Comprehensive solar panel inspection services using advanced drone technology and AI analysis. Thermal imaging, defect detection, and performance optimization."
         keywords="solar inspection services, drone solar analysis, thermal imaging inspection, solar panel maintenance, AI defect detection"
         canonicalUrl="https://solareye.info/services"
