@@ -6,7 +6,7 @@ import Features from "./Features";
 import OurStory from "./OurStory";
 import HowItWorks from "./HowItWorks";
 import Services from "./Services";
-
+import AfterContactSection from "./AfterContactSection"
 export default function Home() {
   return (
     <div className="">
@@ -14,8 +14,9 @@ export default function Home() {
       <HeroSection />
       <OurStory />
       <Services />
-      <HowItWorks />
       {/* <Features /> */}
+      <HowItWorks />
+      <AfterContactSection/>
       <CallToAction />
       <Footer />
     </div>

@@ -1,4 +1,3 @@
-
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Target, Rocket } from 'lucide-react';
@@ -46,7 +45,7 @@ const OurVisionAndMission = () => {
   return (
     <div 
       ref={sectionRef}
-      className="relative min-h-screen bg-white text-white overflow-hidden py-32  px-8"
+      className="relative min-h-screen bg-white text-white overflow-hidden py-20 px-4 sm:px-8 md:px-16 lg:px-24"
     >
       <SectionBackground />
       
@@ -57,10 +56,10 @@ const OurVisionAndMission = () => {
         viewport={{ once: true }}
         custom={0}
         variants={sectionVariants}
-        className="max-w-6xl mx-auto flex items-center space-x-16 mb-32 relative"
+        className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start space-y-12 lg:space-y-0 lg:space-x-16 mb-24 relative"
       >
         <motion.div 
-          className="w-1/2 space-y-8"
+          className="w-full lg:w-1/2 space-y-6"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -68,17 +67,17 @@ const OurVisionAndMission = () => {
         >
           <div className="flex items-center space-x-4 mb-6">
             <IconCircle icon={Rocket} color="bg-[#185B8D]" />
-            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-[#272D3F]">
+            <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-[#272D3F]">
               Our Vision
             </h2>
           </div>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
             We envision a future where technology and sustainability converge to create transformative solutions. Our commitment is to push the boundaries of innovation, driving meaningful progress that harmonizes technological advancement with environmental stewardship.
           </p>
         </motion.div>
 
         <motion.div 
-          className="w-1/2 relative"
+          className="w-full lg:w-1/2 relative"
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.3 }}
         >
@@ -87,9 +86,10 @@ const OurVisionAndMission = () => {
             style={{ y: backgroundY }}
           />
           <motion.img
-             src="https://img.freepik.com/premium-photo/innovative-solar-panel-field-maintenance-engineers-utilizing-drones-advanced-monitoring_38013-26995.jpg"
-alt="Vision"
+            src="https://img.freepik.com/premium-photo/innovative-solar-panel-field-maintenance-engineers-utilizing-drones-advanced-monitoring_38013-26995.jpg"
+            alt="Vision"
             className="relative z-10 rounded-2xl shadow-2xl transform -rotate-3 w-full h-auto object-cover"
+            loading="lazy"
           />
         </motion.div>
       </motion.div>
@@ -101,10 +101,10 @@ alt="Vision"
         viewport={{ once: true }}
         custom={1}
         variants={sectionVariants}
-        className="max-w-6xl mx-auto flex items-center space-x-16 relative"
+        className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start space-y-12 lg:space-y-0 lg:space-x-16 relative"
       >
         <motion.div 
-          className="w-1/2 relative"
+          className="w-full lg:w-1/2 relative"
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.3 }}
         >
@@ -113,14 +113,15 @@ alt="Vision"
             style={{ y: backgroundY }}
           />
           <motion.img
-             src="https://149355317.v2.pressablecdn.com/wp-content/uploads/2024/01/flycart-30-solar-farm.jpg"
-alt="Mission"
+            src="https://149355317.v2.pressablecdn.com/wp-content/uploads/2024/01/flycart-30-solar-farm.jpg"
+            alt="Mission"
             className="relative z-10 rounded-2xl shadow-2xl transform rotate-3 w-full h-auto object-cover"
+            loading="lazy"
           />
         </motion.div>
 
         <motion.div 
-          className="w-1/2 space-y-8"
+          className="w-full lg:w-1/2 space-y-6"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -128,11 +129,11 @@ alt="Mission"
         >
           <div className="flex items-center space-x-4 mb-6">
             <IconCircle icon={Target} color="bg-[#185B8D]" />
-            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-[#272D3F]">
+            <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-[#272D3F]">
               Our Mission
             </h2>
           </div>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
             Our mission is to empower global change through cutting-edge technological solutions. We are dedicated to inspiring innovation, fostering sustainable practices, and creating transformative experiences that bridge the gap between technological potential and real-world impact.
           </p>
         </motion.div>

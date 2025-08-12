@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import {  Eye, Monitor,Wrench,AlertTriangle, BarChart3,  ArrowRight,  Lightbulb } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-
 const Services = () => {
+ 
   const [isVisible, setIsVisible] = useState({});
   const navigate=useNavigate();
    useEffect(() => {
@@ -63,7 +63,9 @@ const services = [
 
 
   return (
+    
     <section id="services" className="py-20 bg-white">
+       
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -109,6 +111,7 @@ const services = [
           
           
         </div>
+        
       </section>
           );
           };

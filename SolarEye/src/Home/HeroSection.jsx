@@ -4,13 +4,42 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Satellite, SunDim, RepeatIcon, ShieldCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { SEOHead, StructuredData, BreadcrumbSchema } from '../SEO/SEOHead.jsx'; // ✅ Import SEO helpers
 
 const SolarDroneRepairHero = () => {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
-  
+   const breadcrumbItems = [
+    { name: "Home", url: "https://solareye.info" },
+    { name: "Drone Repair", url: "https://solareye.info" }
+  ];
   return (
     <div className="relative min-h-screen w-full pt-8  bg-gradient-to-br from-[#272D3F] via-[#232838] to-[#226F9E] overflow-hidden">
+       <SEOHead
+        title="Solar Drone Repair & Maintenance - SolarEye"
+        description="Professional solar drone repair, maintenance, and optimization services. Keep your solar inspection equipment in peak condition with SolarEye."
+        keywords="drone repair, solar inspection drone service, drone maintenance solar, PV inspection drone"
+        canonicalUrl="https://solareye.info/drone-repair"
+      />
+
+      {/* ✅ Structured Data */}
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Solar Drone Repair",
+          "description": "Professional repair and maintenance for solar inspection drones.",
+          "provider": {
+            "@type": "Organization",
+            "name": "SolarEye",
+            "url": "https://solareye.info"
+          },
+          "areaServed": "Worldwide"
+        }}
+      />
+
+      {/* ✅ Breadcrumb Schema */}
+      <BreadcrumbSchema items={breadcrumbItems} />
       {/* Animated Background Particles */}
       <motion.div 
         className="absolute inset-0 z-0"

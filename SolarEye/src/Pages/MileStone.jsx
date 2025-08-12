@@ -29,12 +29,13 @@ const JourneyMilestones = () => {
           variants={itemVariants}
           initial="hidden"
           whileInView="visible"
-          className="text-4xl font-bold text-center mb-16 text-[#272D3F]"
+          className="text-3xl sm:text-4xl font-bold text-center mb-12 text-[#272D3F]"
         >
           Our Journey Milestones
         </motion.h2>
 
         <div className="relative">
+          {/* Vertical line */}
           <div className="absolute inset-0 flex justify-center">
             <motion.div 
               initial={{ height: 0 }}
@@ -57,26 +58,39 @@ const JourneyMilestones = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.2 }}
-                className={`flex items-center w-full ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}
+                className={`
+                  flex 
+                  flex-col 
+                  items-center 
+                  w-full
+                  md:flex-row
+                  md:items-center
+                  ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}
+                `}
               >
-                <div className="w-1/2"></div>
+                {/* Spacer for even/odd side on desktop */}
+                <div className="hidden md:block md:w-1/2"></div>
+
+                {/* Year circle */}
                 <motion.div 
                   whileHover={{ scale: 1.1 }}
-                  className="z-10 flex items-center order-1 bg-gradient-to-r from-[#2985B3] to-[#4ECDC4] shadow-xl w-20 h-20 rounded-full"
+                  className="z-10 flex items-center bg-gradient-to-r from-[#2985B3] to-[#4ECDC4] shadow-xl w-16 h-16 sm:w-20 sm:h-20 rounded-full justify-center"
                 >
-                  <h1 className="mx-auto font-semibold text-xl text-white">
+                  <h1 className="mx-auto font-semibold text-lg sm:text-xl text-white">
                     {milestone.year}
                   </h1>
                 </motion.div>
+
+                {/* Content box */}
                 <motion.div 
                   whileHover={{ translateX: index % 2 === 0 ? 10 : -10 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="order-1 bg-white rounded-lg shadow-xl w-1/2 px-6 py-6 border-l-4 border-[#2985B3]"
+                  className="bg-white rounded-lg shadow-xl w-full md:w-1/2 px-4 sm:px-6 py-4 sm:py-6 border-l-4 border-[#2985B3] mt-6 md:mt-0"
                 >
-                  <h3 className="mb-3 font-bold text-xl text-[#2985B3]">
+                  <h3 className="mb-2 font-bold text-xl text-[#2985B3]">
                     {milestone.event}
                   </h3>
-                  <p className="text-sm leading-snug text-gray-600">
+                  <p className="text-sm sm:text-base leading-relaxed text-gray-600">
                     {milestone.description}
                   </p>
                 </motion.div>

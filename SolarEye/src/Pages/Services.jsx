@@ -5,6 +5,7 @@ import {
   X, Clock, Users, Award, Zap, TrendingUp, Shield, Phone, Mail
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { SEOHead, StructuredData, BreadcrumbSchema } from '../SEO/SEOHead.jsx';
 
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
@@ -13,7 +14,10 @@ const Services = () => {
   const [activeService, setActiveService] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const navigate=useNavigate();
-
+  const breadcrumbItems = [
+    { name: "Home", url: "https://solareye.info" },
+    { name: "Services", url: "https://solareye.info/services" }
+  ];
 
   useEffect(() => {
     setIsVisible(true);
@@ -349,6 +353,29 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-white">
               <NavBar />
+
+              <SEOHead 
+        title="Solar Inspection Services - Drone AI Analysis | SolarEye"
+        description="Comprehensive solar panel inspection services using advanced drone technology and AI analysis. Thermal imaging, defect detection, and performance optimization."
+        keywords="solar inspection services, drone solar analysis, thermal imaging inspection, solar panel maintenance, AI defect detection"
+        canonicalUrl="https://solareye.info/services"
+      />
+
+      <StructuredData 
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Solar Inspection Services",
+          "description": "Comprehensive solar panel inspection services using advanced drone technology and AI analysis.",
+          "provider": {
+            "@type": "Organization",
+            "name": "SolarEye",
+            "url": "https://solareye.info"
+          }
+        }}
+      />
+
+      <BreadcrumbSchema items={breadcrumbItems} />
 
       {/* Header Section */}
       <div className="relative bg-gradient-to-br from-[#272D3F] via-[#232838] to-[#226F9E] flex items-center justify-center overflow-hidden px-12 pb-20 pt-32 mb-12 text-center">

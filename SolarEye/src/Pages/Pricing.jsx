@@ -5,14 +5,19 @@ import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import ShaheenFooter from '../components/Footer';
 import WhyChooseUs from '../components/WSU';
+import { SEOHead, StructuredData, BreadcrumbSchema } from '../SEO/SEOHead.jsx'; // ✅ Import SEO tools
+
 const Pricing = () => {
   const navigate=useNavigate();
   const [isVisible, setIsVisible] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState('professional');
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+  const breadcrumbItems = [
+    { name: "Home", url: "https://solareye.info" },
+    { name: "Pricing", url: "https://solareye.info/pricing" }
+  ];
 
   const plans = [
     {
@@ -115,36 +120,44 @@ const containerVariants = {
       }
     }
   };
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6, ease: "easeOut" } 
-    },
-  };
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      company: "GreenTech Solar",
-      role: "Operations Manager",
-      content: "SolarEye detected issues we would have missed for months. Their AI analysis saved us $50,000 in potential damage.",
-      rating: 5
-    },
-    {
-      name: "Mike Chen",
-      company: "SunPower Industries",
-      role: "Maintenance Director",
-      content: "The precision and speed of their drone inspections is incredible. We've reduced our inspection time by 80%.",
-      rating: 5
-    }
-  ];
 
   return (
     
     <div className="bg-white min-h-screen text-white">
       <NavBar/>
+
+        <SEOHead
+        title="Solar Inspection Pricing Plans | SolarEye"
+        description="Choose from our flexible pricing plans for solar inspections, AI diagnostics, and predictive maintenance. From small installations to large solar farms."
+        keywords="solar inspection pricing, solar panel maintenance cost, drone inspection plans, AI diagnostics solar"
+        canonicalUrl="https://solareye.info/pricing"
+      />
+
+      {/* ✅ JSON-LD Structured Data */}
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Solar Inspection Pricing",
+          "description": "Pricing plans for professional solar inspections using AI and drone technology.",
+          "brand": {
+            "@type": "Organization",
+            "name": "SolarEye",
+            "url": "https://solareye.info"
+          },
+          "offers": plans.map(plan => ({
+            "@type": "Offer",
+            "name": plan.name,
+            "price": plan.price,
+            "priceCurrency": "USD",
+            "url": `https://solareye.info/pricing#${plan.id}`,
+            "availability": "https://schema.org/InStock"
+          }))
+        }}
+      />
+
+      {/* ✅ Breadcrumb Schema */}
+      <BreadcrumbSchema items={breadcrumbItems} />
   <motion.div 
         className="relative bg-gradient-to-br from-[#272D3F] via-[#232838] to-[#226F9E] flex items-center justify-center overflow-hidden  px-12 pb-20 pt-32 mb-12 text-center "
   >
@@ -268,188 +281,10 @@ onClick={() => navigate('/contactus')}
         </div>
       </div>
 
-      {/* Value Proposition */}
-      {/* <div className="py-20 text-[#1E222D]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold text-[#1E222D] mb-4">Why Choose SolarEye?</h3>
-            <p className="text-xl text-gray-300">Advanced AI technology meets solar expertise</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="text-center">
-              <div className="bg-gradient-to-br from-blue-500 to-purple-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Eye className="h-10 w-10 text-white" />
-              </div>
-              <h4 className="text-2xl font-bold mb-4">AI-Powered Detection</h4>
-              <p className="text-gray-300">Our advanced AI algorithms can detect micro-cracks, hot spots, and performance issues invisible to the human eye.</p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-gradient-to-br from-orange-500 to-red-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Zap className="h-10 w-10 text-white" />
-              </div>
-              <h4 className="text-2xl font-bold mb-4">Lightning Fast</h4>
-              <p className="text-gray-300">Complete inspections in hours, not days. Get instant reports with actionable insights and recommendations.</p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-gradient-to-br from-green-500 to-teal-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Shield className="h-10 w-10 text-white" />
-              </div>
-              <h4 className="text-2xl font-bold mb-4">Precision Accuracy</h4>
-              <p className="text-gray-300">99.8% accuracy rate in defect detection with comprehensive thermal and visual analysis capabilities.</p>
-            </div>
-          </div>
-        </div>
-      </div> */}
-       {/* <div className="py-20 text-[#1E222D] bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h3 className="text-3xl font-bold text-[#1E222D] mb-4">Why Choose SolarEye?</h3>
-          <p className="text-xl text-gray-300">Advanced AI technology meets solar expertise</p>
-        </div>
-
-        <motion.div 
-          className="grid md:grid-cols-3 gap-12"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div className="text-center" variants={cardVariants}>
-            <div className="bg-gradient-to-br from-blue-500 to-purple-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Eye className="h-10 w-10 text-white" />
-            </div>
-            <h4 className="text-2xl font-bold mb-4">AI-Powered Detection</h4>
-            <p className="text-gray-300">
-              Our advanced AI algorithms can detect micro-cracks, hot spots, and performance issues invisible to the human eye.
-            </p>
-          </motion.div>
-
-          <motion.div className="text-center" variants={cardVariants}>
-            <div className="bg-gradient-to-br from-orange-500 to-red-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Zap className="h-10 w-10 text-white" />
-            </div>
-            <h4 className="text-2xl font-bold mb-4">Lightning Fast</h4>
-            <p className="text-gray-300">
-              Complete inspections in hours, not days. Get instant reports with actionable insights and recommendations.
-            </p>
-          </motion.div>
-
-          <motion.div className="text-center" variants={cardVariants}>
-            <div className="bg-gradient-to-br from-green-500 to-teal-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Shield className="h-10 w-10 text-white" />
-            </div>
-            <h4 className="text-2xl font-bold mb-4">Precision Accuracy</h4>
-            <p className="text-gray-300">
-              99.8% accuracy rate in defect detection with comprehensive thermal and visual analysis capabilities.
-            </p>
-          </motion.div>
-        </motion.div>
-      </div>
-    </div> */}
-
-     {/* <div className="py-20 text-[#1E222D] bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h3 className="text-3xl font-bold text-[#1E222D] mb-4">Why Choose SolarEye?</h3>
-          <p className="text-xl text-gray-600">Advanced AI technology meets solar expertise</p>
-        </div>
-
-        <motion.div 
-          className="grid md:grid-cols-3 gap-12"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div className="text-center" variants={cardVariants}>
-            <div className="bg-gradient-to-br from-blue-500 to-purple-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Eye className="h-10 w-10 text-white" />
-            </div>
-            <h4 className="text-2xl font-bold mb-4 text-[#1E222D]">AI-Powered Detection</h4>
-            <p className="text-gray-700">
-              Our advanced AI algorithms can detect micro-cracks, hot spots, and performance issues invisible to the human eye.
-            </p>
-          </motion.div>
-
-          <motion.div className="text-center" variants={cardVariants}>
-            <div className="bg-gradient-to-br from-orange-500 to-red-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Zap className="h-10 w-10 text-white" />
-            </div>
-            <h4 className="text-2xl font-bold mb-4 text-[#1E222D]">Lightning Fast</h4>
-            <p className="text-gray-700">
-              Complete inspections in hours, not days. Get instant reports with actionable insights and recommendations.
-            </p>
-          </motion.div>
-
-          <motion.div className="text-center" variants={cardVariants}>
-            <div className="bg-gradient-to-br from-green-500 to-teal-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Shield className="h-10 w-10 text-white" />
-            </div>
-            <h4 className="text-2xl font-bold mb-4 text-[#1E222D]">Precision Accuracy</h4>
-            <p className="text-gray-700">
-              99.8% accuracy rate in defect detection with comprehensive thermal and visual analysis capabilities.
-            </p>
-          </motion.div>
-        </motion.div>
-      </div>
-    </div> */}
+      
     <WhyChooseUs/>
 
-      {/* Testimonials */}
-      {/* <div className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold mb-4">Trusted by Solar Leaders</h3>
-            <p className="text-xl text-gray-300">See what our clients say about SolarEye</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-lg text-gray-300 mb-6 italic">"{testimonial.content}"</p>
-                <div>
-                  <p className="font-semibold text-white">{testimonial.name}</p>
-                  <p className="text-sm text-gray-400">{testimonial.role}, {testimonial.company}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div> */}
-
-      {/* CTA Section */}
-      {/* <div className="bg-gradient-to-r from-orange-600 to-red-600 py-20">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h3 className="text-4xl font-bold mb-6">Ready to Revolutionize Your Solar Operations?</h3>
-          <p className="text-xl mb-8 opacity-90">
-            Join hundreds of solar professionals who trust SolarEye for their inspection needs
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-white text-orange-600 px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-gray-100 transition-colors shadow-xl">
-              Schedule Free Demo
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white hover:text-orange-600 transition-colors">
-              Contact Sales
-            </button>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center justify-center mt-8 gap-6 text-sm opacity-75">
-            <div className="flex items-center">
-              <Phone className="h-4 w-4 mr-2" />
-              +1 (555) 123-SOLAR
-            </div>
-            <div className="flex items-center">
-              <Mail className="h-4 w-4 mr-2" />
-              hello@solareye.com
-            </div>
-          </div>
-        </div>
-      </div> */}
+      
 
       <ShaheenFooter/>
     </div>

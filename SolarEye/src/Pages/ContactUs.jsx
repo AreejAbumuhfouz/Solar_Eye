@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { SEOHead, StructuredData, BreadcrumbSchema } from '../SEO/SEOHead.jsx'; // ✅ Import SEO tools
 
 import { 
   Mail, 
@@ -23,7 +24,10 @@ const ContactUs = () => {
     subject: '',
     message: '',
   });
-
+  const breadcrumbItems = [
+    { name: "Home", url: "https://solareye.info" },
+    { name: "Contact Us", url: "https://solareye.info/contact" }
+  ];
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
   // const apiUrl = process.env.REACT_APP_API_URL;
@@ -67,6 +71,35 @@ const ContactUs = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <NavBar />
+        <SEOHead
+        title="Contact SolarEye - Get a Free Consultation"
+        description="Get in touch with SolarEye for expert solar inspection, maintenance, and AI diagnostics. Request a free consultation today."
+        keywords="contact solar inspection, solar maintenance help, drone solar contact, AI solar diagnostics"
+        canonicalUrl="https://solareye.info/contact"
+      />
+
+      {/* ✅ JSON-LD Structured Data */}
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "SolarEye",
+            "url": "https://solareye.info",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+1-234-567-8900",
+              "contactType": "Customer Service",
+              "areaServed": "Worldwide",
+              "availableLanguage": ["English"]
+            }
+          }
+        }}
+      />
+
+      {/* ✅ Breadcrumb Schema */}
+      <BreadcrumbSchema items={breadcrumbItems} />
       <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
