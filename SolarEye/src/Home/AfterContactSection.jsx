@@ -27,7 +27,7 @@ export default function AfterContactSection() {
       features: ["Thermal imaging", "HD photography", "GPS mapping"],
       color: "from-[#54AAD2] to-[#2985B3]",
       bgColor: "from-[#54AAD2]/10 to-[#2985B3]/10",
-      image: Analysis
+      image: Inspect
     },
     {
       icon: Brain,
@@ -36,7 +36,7 @@ export default function AfterContactSection() {
       features: ["Defect detection", "Performance analysis", "Issue classification"],
       color: "from-[#252B3B] to-[#2985B3]",
       bgColor: "from-[#252B3B]/10 to-[#2985B3]/10",
-      image: Inspect
+      image: Analysis
     },
     {
       icon: FileText,
