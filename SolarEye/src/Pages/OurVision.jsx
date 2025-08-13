@@ -144,7 +144,6 @@
 
 // export default OurVisionAndMission;
 
-
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Target, Rocket } from 'lucide-react';
@@ -203,11 +202,11 @@ const OurVisionAndMission = () => {
         viewport={{ once: true }}
         custom={0}
         variants={sectionVariants}
-        className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-16 mb-20"
+        className="max-w-6xl mx-auto flex flex-col lg:flex-row lg:items-start gap-10 lg:gap-16 mb-20"
       >
-        {/* Text */}
+        {/* Text first on mobile */}
         <motion.div
-          className="w-full lg:w-1/2 space-y-6"
+          className="w-full lg:w-1/2 order-1 space-y-6"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -224,9 +223,9 @@ const OurVisionAndMission = () => {
           </p>
         </motion.div>
 
-        {/* Image */}
+        {/* Image second on mobile */}
         <motion.div
-          className="w-full lg:w-1/2 relative"
+          className="w-full lg:w-1/2 order-2 relative"
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.3 }}
         >
@@ -250,29 +249,11 @@ const OurVisionAndMission = () => {
         viewport={{ once: true }}
         custom={1}
         variants={sectionVariants}
-        className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-16"
+        className="max-w-6xl mx-auto flex flex-col lg:flex-row lg:items-start gap-10 lg:gap-16"
       >
-        {/* Image */}
+        {/* Text first on mobile */}
         <motion.div
-          className="w-full lg:w-1/2 relative"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.3 }}
-        >
-          <motion.div
-            className="absolute inset-0 bg-[#185B8D] rounded-2xl rotate-6"
-            style={{ y: backgroundY }}
-          />
-          <motion.img
-            src="https://149355317.v2.pressablecdn.com/wp-content/uploads/2024/01/flycart-30-solar-farm.jpg"
-            alt="Mission"
-            className="relative z-10 rounded-2xl shadow-2xl transform rotate-3 w-full h-auto object-cover max-h-[400px] sm:max-h-[500px]"
-            loading="lazy"
-          />
-        </motion.div>
-
-        {/* Text */}
-        <motion.div
-          className="w-full lg:w-1/2 space-y-6"
+          className="w-full lg:w-1/2 order-1 space-y-6"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -287,6 +268,24 @@ const OurVisionAndMission = () => {
           <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
             Our mission is to empower global change through cutting-edge technological solutions. We are dedicated to inspiring innovation, fostering sustainable practices, and creating transformative experiences that bridge the gap between technological potential and real-world impact.
           </p>
+        </motion.div>
+
+        {/* Image second on mobile */}
+        <motion.div
+          className="w-full lg:w-1/2 order-2 relative"
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div
+            className="absolute inset-0 bg-[#185B8D] rounded-2xl rotate-6"
+            style={{ y: backgroundY }}
+          />
+          <motion.img
+            src="https://149355317.v2.pressablecdn.com/wp-content/uploads/2024/01/flycart-30-solar-farm.jpg"
+            alt="Mission"
+            className="relative z-10 rounded-2xl shadow-2xl transform rotate-3 w-full h-auto object-cover max-h-[400px] sm:max-h-[500px]"
+            loading="lazy"
+          />
         </motion.div>
       </motion.div>
     </div>
