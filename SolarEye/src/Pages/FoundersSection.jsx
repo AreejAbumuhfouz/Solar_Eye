@@ -311,7 +311,6 @@
 // };
 
 // export default FoundersSection;
-
 import React, { useState } from "react";
 import { Mail, Linkedin, Award, MapPin } from "lucide-react";
 
@@ -320,56 +319,40 @@ const FoundersSection = () => {
 
   const founders = [
     {
-      name: "Dr. Maram Abumuhfouz",
-      position: "Chief Executive Officer",
-      credentials: "Ph.D. Nanotechnology Engineering",
-      specialization: "Optical Sensors & Solar Cell Technology",
-      institution: "Max Planck Institute, Germany",
+      name: "Maram Abumuhfouz",
+      position: "CEO",
       description:
-        "Leading expert in nanotechnology with extensive research in optical sensors and solar cell innovations. Pioneering sustainable energy solutions through advanced materials engineering.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616c7e5b1f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+        "Doctor in Nanotechnology engineering and specialized in (optical sensors & solar cells) (Germany- Max Planck)",
+      image: "/assets/Maram.jpg", // Using your original image reference
       email: "marammuhfouz@outlook.com",
-      linkedin: "https://www.linkedin.com/in/m%C3%A4ram-a-muhfouz-639202210/",
-      expertise: ["Nanotechnology", "Solar Cells", "Optical Sensors", "Materials Engineering"]
+      linkedin: "https://www.linkedin.com/in/m%C3%A4ram-a-muhfouz-639202210/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
     {
       name: "Tala Younes",
-      position: "Head of Artificial Intelligence",
-      credentials: "M.Sc. Electrical Engineering",
-      specialization: "AI Systems & Electronics Innovation",
-      institution: "Ministry of Education, UAE",
+      position: "Head of AI",
       description:
-        "Electrical engineer specializing in AI and electronics with expertise in creative design and innovation. Leading our AI-driven solutions for intelligent monitoring systems.",
+        "Electrical engineer (AI and electronics department) and creative design and innovation lecturer (UAE-MOE)",
       email: "tala.younes@ese.gov.ae",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+      image: "/assets/Tala.jpg", // Using your original image reference
       linkedin: "https://www.linkedin.com/in/tala-younes-b02b65122/",
-      expertise: ["Artificial Intelligence", "Electronics", "Innovation Design", "Educational Technology"]
     },
     {
       name: "Tasneem Harahsheh",
-      position: "Head of Research & Development",
-      credentials: "M.Sc. Mechatronic Engineering",
-      specialization: "MIT Innovators Under 35 Award Winner",
-      institution: "Ministry of Education, Qatar",
+      position: "Head of R&D",
       description:
-        "Award-winning mechatronic engineer recognized by MIT for innovative contributions. Driving cutting-edge R&D initiatives in autonomous systems and robotics integration.",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "Master Mechatronic Engineer, MIT Inventors Under 35 award (Qatar-MOE)",
+      image: "/assets/Tasneem.jpg", // Using your original image reference
       email: "Tasneem.harahsha@gmail.com",
       linkedin: "https://www.linkedin.com/in/tasneem-harahsheh-680942121/",
-      expertise: ["Mechatronics", "Robotics", "Autonomous Systems", "Innovation Strategy"]
     },
     {
       name: "Areej Abumuhfouz",
-      position: "Head of Software Engineering",
-      credentials: "B.Sc. Computer Science",
-      specialization: "Full-Stack Development & System Architecture",
-      institution: "Enterprise Software Solutions",
+      position: "Head of Programming",
       description:
-        "Full-stack developer with expertise in scalable e-commerce platforms, secure authentication systems, and enterprise database management. Architecting robust software solutions.",
-      image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+        "Full Stack Developer specializing in e-commerce platforms, secure authentication, and database management.",
+      image: "/assets/Areej.jpg", // Using your original image reference
       email: "areejabumahfouz@gmail.com",
-      linkedin: "https://www.linkedin.com/in/areejabumuhfouz",
-      expertise: ["Full-Stack Development", "System Architecture", "Database Management", "E-commerce Solutions"]
+      linkedin: "www.linkedin.com/in/areejabumuhfouz",
     },
   ];
 
@@ -396,76 +379,43 @@ const FoundersSection = () => {
           {founders.map((founder, index) => (
             <div
               key={founder.name}
-              className={`group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 ${
+              className={`group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 h-[600px] flex flex-col ${
                 hoveredCard === index ? 'transform -translate-y-2' : ''
               }`}
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Profile Image */}
-              <div className="relative h-64 lg:h-72 overflow-hidden">
+              <div className="relative h-64 overflow-hidden flex-shrink-0">
                 <img
                   src={founder.image}
                   alt={founder.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                
-                {/* Position Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="inline-flex items-center px-3 py-1 text-xs font-medium text-white bg-[#185B8D]/90 backdrop-blur-sm rounded-full">
-                    {founder.position}
-                  </span>
-                </div>
               </div>
 
               {/* Content */}
-              <div className="p-6 lg:p-8">
-                {/* Name & Credentials */}
+              <div className="p-6 flex flex-col flex-grow">
+                {/* Name & Position */}
                 <div className="mb-4">
-                  <h3 className="text-xl lg:text-2xl font-bold text-[#1C1F2D] mb-1">
+                  <h3 className="text-xl font-bold text-[#185B8D] mb-1">
                     {founder.name}
                   </h3>
-                  <p className="text-sm font-medium text-[#185B8D] mb-2">
-                    {founder.credentials}
+                  <p className="text-sm font-medium text-gray-500 mb-3">
+                    {founder.position}
                   </p>
-                  <div className="flex items-start gap-2 text-sm text-gray-600">
-                    <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                    <span>{founder.institution}</span>
-                  </div>
                 </div>
 
-                {/* Specialization */}
-                <div className="mb-4">
-                  <p className="text-sm font-medium text-gray-800 mb-2">
-                    {founder.specialization}
-                  </p>
-                  <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                {/* Description - Fixed height area */}
+                <div className="mb-6 flex-grow">
+                  <p className="text-sm text-gray-600 leading-relaxed h-20 overflow-hidden">
                     {founder.description}
                   </p>
                 </div>
 
-                {/* Expertise Tags */}
-                <div className="mb-6">
-                  <div className="flex flex-wrap gap-1">
-                    {founder.expertise.slice(0, 3).map((skill, skillIndex) => (
-                      <span
-                        key={skillIndex}
-                        className="inline-block px-2 py-1 text-xs font-medium text-[#185B8D] bg-[#185B8D]/5 rounded-md"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                    {founder.expertise.length > 3 && (
-                      <span className="inline-block px-2 py-1 text-xs font-medium text-gray-500 bg-gray-100 rounded-md">
-                        +{founder.expertise.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Contact Actions */}
-                <div className="flex gap-3">
+                {/* Contact Actions - Always at bottom */}
+                <div className="flex gap-3 mt-auto">
                   <a
                     href={`mailto:${founder.email}`}
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-white bg-[#185B8D] hover:bg-[#1C6FA0] rounded-lg transition-colors duration-200"
