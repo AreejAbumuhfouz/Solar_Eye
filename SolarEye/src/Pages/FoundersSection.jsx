@@ -1,7 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Areej from "../assets/areej.jfif";
+import Areej from "../assets/Areej.jpg";
 import Maram from "../assets/Maram.jpg";
 import Tala from "../assets/Tala.jpg";
 import Tasneem from "../assets/Tasneem.jpg";
