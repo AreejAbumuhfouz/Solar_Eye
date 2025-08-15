@@ -148,165 +148,380 @@
 // export default FoundersSection;
 
 
-import React from "react";
-import { motion } from "framer-motion";
-import Areej from "../assets/Areej.jpg";
-import Maram from "../assets/Maram.jpg";
-import Tala from "../assets/Tala.jpg";
-import Tasneem from "../assets/Tasneem.jpg";
+// import React from "react";
+// import { motion } from "framer-motion";
+// import Areej from "../assets/Areej.jpg";
+// import Maram from "../assets/Maram.jpg";
+// import Tala from "../assets/Tala.jpg";
+// import Tasneem from "../assets/Tasneem.jpg";
+
+// const FoundersSection = () => {
+//   const founders = [
+//     {
+//       name: "Maram Abumuhfouz",
+//       position: "CEO",
+//       description:
+//         "Doctor in Nanotechnology engineering and specialized in (optical sensors & solar cells) (Germany- Max Planck)",
+//       image: Maram,
+//       email: "marammuhfouz@outlook.com",
+//       linkedin:
+//         "https://www.linkedin.com/in/m%C3%A4ram-a-muhfouz-639202210/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+//     },
+//     {
+//       name: "Tala Younes",
+//       position: "Head of AI",
+//       description:
+//         "Electrical engineer (AI and electronics department) and creative design and innovation lecturer (UAE-MOE)",
+//       email: "tala.younes@ese.gov.ae",
+//       image: Tala,
+//       linkedin: "https://www.linkedin.com/in/tala-younes-b02b65122/",
+//     },
+//     {
+//       name: "Tasneem Harahsheh",
+//       position: "Head of R&D",
+//       description:
+//         "Master Mechatronic Engineer, MIT Inventors Under 35 award (Qatar-MOE)",
+//       image: Tasneem,
+//       email: "Tasneem.harahsha@gmail.com",
+//       linkedin: "https://www.linkedin.com/in/tasneem-harahsheh-680942121/",
+//     },
+//     {
+//       name: "Areej Abumuhfouz",
+//       position: "Head of Programming",
+//       description:
+//         "Full Stack Developer specializing in e-commerce platforms, secure authentication, and database management.",
+//       image: Areej,
+//       email: "areejabumahfouz@gmail.com",
+//       linkedin: "www.linkedin.com/in/areejabumuhfouz",
+//     },
+//   ];
+
+//   return (
+//     <motion.div
+//       className="py-24 bg-white"
+//       initial={{ opacity: 0, y: 50 }}
+//       whileInView={{
+//         opacity: 1,
+//         y: 0,
+//         transition: {
+//           type: "spring",
+//           damping: 15,
+//           stiffness: 120,
+//         },
+//       }}
+//       viewport={{ once: true, amount: 0.2 }}
+//     >
+//       <div className="container mx-auto px-6 text-center">
+//         <motion.h2
+//           className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#1C1F2D]"
+//           initial={{ scale: 0.9, opacity: 0 }}
+//           whileInView={{ scale: 1, opacity: 1 }}
+//           transition={{ duration: 0.5 }}
+//         >
+//           Meet the Founders
+//         </motion.h2>
+//         <motion.p
+//           className="max-w-3xl mx-auto text-xl text-gray-700 mb-16"
+//           initial={{ scale: 0.9, opacity: 0 }}
+//           whileInView={{ scale: 1, opacity: 1 }}
+//           transition={{ duration: 0.5, delay: 0.2 }}
+//         >
+//           We are four passionate women engineers from Jordan who are
+//           transforming solar infrastructure monitoring through innovative drone
+//           technology.
+//         </motion.p>
+
+//         <div className="grid md:grid-cols-4 gap-8">
+//           {founders.map((founder, index) => (
+//             <motion.div
+//               key={founder.name}
+//               className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl"
+//               initial={{ opacity: 0, scale: 0.9 }}
+//               whileInView={{
+//                 opacity: 1,
+//                 scale: 1,
+//                 transition: {
+//                   delay: index * 0.2,
+//                   type: "spring",
+//                   damping: 15,
+//                   stiffness: 120,
+//                 },
+//               }}
+//             >
+//               <div
+//                 className="h-64 bg-cover bg-center"
+//                 style={{
+//                   backgroundImage: `url('${founder.image}')`,
+//                   backgroundSize: "cover",
+//                   backgroundPosition: "center",
+//                 }}
+//               />
+//               <div className="p-6">
+//                 <h3 className="text-2xl font-bold text-[#185B8D] mb-1">
+//                   {founder.name}
+//                 </h3>
+//                 <p className="text-sm text-gray-500 mb-3">
+//                   {founder.position}
+//                 </p>
+//                 <p className="text-gray-600 mb-4 h-24 overflow-hidden">
+//                   {founder.description}
+//                 </p>
+
+//                 <div className="flex justify-between space-x-2">
+//                   <a
+//                     href={`mailto:${founder.email}`}
+//                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-white bg-[#185B8D] hover:bg-[#2A7EB3] rounded-md transition-colors"
+//                   >
+//                     <svg
+//                       xmlns="http://www.w3.org/2000/svg"
+//                       viewBox="0 0 24 24"
+//                       fill="currentColor"
+//                       className="w-5 h-5"
+//                     >
+//                       <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+//                       <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 6.04a1.5 1.5 0 001.572 0L22.5 6.908z" />
+//                     </svg>
+//                     <span>Email</span>
+//                   </a>
+
+//                   <a
+//                     href={founder.linkedin}
+//                     target="_blank"
+//                     rel="noopener noreferrer"
+//                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-white bg-[#0A66C2] hover:bg-[#0D7ECA] rounded-md transition-colors"
+//                   >
+//                     <svg
+//                       xmlns="http://www.w3.org/2000/svg"
+//                       viewBox="0 0 24 24"
+//                       fill="currentColor"
+//                       className="w-5 h-5"
+//                     >
+//                       <path d="M20 3H4a1 1 0 00-1 1v16a1 1 0 001 1h16a1 1 0 001-1V4a1 1 0 00-1-1zm-9 14h-2v-5h2v5zm-1-6.3a1.16 1.16 0 111.15-1.16 1.16 1.16 0 01-1.15 1.16zm8 6.3h-2v-2.88c0-1.67-2-1.54-2 0V17h-2v-5h2v.8c.92-1.7 4-1.83 4 1.63V17z" />
+//                     </svg>
+//                     <span>LinkedIn</span>
+//                   </a>
+//                 </div>
+//               </div>
+//             </motion.div>
+//           ))}
+//         </div>
+//       </div>
+//     </motion.div>
+//   );
+// };
+
+// export default FoundersSection;
+
+import React, { useState } from "react";
+import { Mail, Linkedin, Award, MapPin } from "lucide-react";
 
 const FoundersSection = () => {
+  const [hoveredCard, setHoveredCard] = useState(null);
+
   const founders = [
     {
-      name: "Maram Abumuhfouz",
-      position: "CEO",
+      name: "Dr. Maram Abumuhfouz",
+      position: "Chief Executive Officer",
+      credentials: "Ph.D. Nanotechnology Engineering",
+      specialization: "Optical Sensors & Solar Cell Technology",
+      institution: "Max Planck Institute, Germany",
       description:
-        "Doctor in Nanotechnology engineering and specialized in (optical sensors & solar cells) (Germany- Max Planck)",
-      image: Maram,
+        "Leading expert in nanotechnology with extensive research in optical sensors and solar cell innovations. Pioneering sustainable energy solutions through advanced materials engineering.",
+      image: "https://images.unsplash.com/photo-1494790108755-2616c7e5b1f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
       email: "marammuhfouz@outlook.com",
-      linkedin:
-        "https://www.linkedin.com/in/m%C3%A4ram-a-muhfouz-639202210/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      linkedin: "https://www.linkedin.com/in/m%C3%A4ram-a-muhfouz-639202210/",
+      expertise: ["Nanotechnology", "Solar Cells", "Optical Sensors", "Materials Engineering"]
     },
     {
       name: "Tala Younes",
-      position: "Head of AI",
+      position: "Head of Artificial Intelligence",
+      credentials: "M.Sc. Electrical Engineering",
+      specialization: "AI Systems & Electronics Innovation",
+      institution: "Ministry of Education, UAE",
       description:
-        "Electrical engineer (AI and electronics department) and creative design and innovation lecturer (UAE-MOE)",
+        "Electrical engineer specializing in AI and electronics with expertise in creative design and innovation. Leading our AI-driven solutions for intelligent monitoring systems.",
       email: "tala.younes@ese.gov.ae",
-      image: Tala,
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
       linkedin: "https://www.linkedin.com/in/tala-younes-b02b65122/",
+      expertise: ["Artificial Intelligence", "Electronics", "Innovation Design", "Educational Technology"]
     },
     {
       name: "Tasneem Harahsheh",
-      position: "Head of R&D",
+      position: "Head of Research & Development",
+      credentials: "M.Sc. Mechatronic Engineering",
+      specialization: "MIT Innovators Under 35 Award Winner",
+      institution: "Ministry of Education, Qatar",
       description:
-        "Master Mechatronic Engineer, MIT Inventors Under 35 award (Qatar-MOE)",
-      image: Tasneem,
+        "Award-winning mechatronic engineer recognized by MIT for innovative contributions. Driving cutting-edge R&D initiatives in autonomous systems and robotics integration.",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       email: "Tasneem.harahsha@gmail.com",
       linkedin: "https://www.linkedin.com/in/tasneem-harahsheh-680942121/",
+      expertise: ["Mechatronics", "Robotics", "Autonomous Systems", "Innovation Strategy"]
     },
     {
       name: "Areej Abumuhfouz",
-      position: "Head of Programming",
+      position: "Head of Software Engineering",
+      credentials: "B.Sc. Computer Science",
+      specialization: "Full-Stack Development & System Architecture",
+      institution: "Enterprise Software Solutions",
       description:
-        "Full Stack Developer specializing in e-commerce platforms, secure authentication, and database management.",
-      image: Areej,
+        "Full-stack developer with expertise in scalable e-commerce platforms, secure authentication systems, and enterprise database management. Architecting robust software solutions.",
+      image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
       email: "areejabumahfouz@gmail.com",
-      linkedin: "www.linkedin.com/in/areejabumuhfouz",
+      linkedin: "https://www.linkedin.com/in/areejabumuhfouz",
+      expertise: ["Full-Stack Development", "System Architecture", "Database Management", "E-commerce Solutions"]
     },
   ];
 
   return (
-    <motion.div
-      className="py-24 bg-white"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-        transition: {
-          type: "spring",
-          damping: 15,
-          stiffness: 120,
-        },
-      }}
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      <div className="container mx-auto px-6 text-center">
-        <motion.h2
-          className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#1C1F2D]"
-          initial={{ scale: 0.9, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          Meet the Founders
-        </motion.h2>
-        <motion.p
-          className="max-w-3xl mx-auto text-xl text-gray-700 mb-16"
-          initial={{ scale: 0.9, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          We are four passionate women engineers from Jordan who are
-          transforming solar infrastructure monitoring through innovative drone
-          technology.
-        </motion.p>
+    <section className="py-16 lg:py-24 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-[#185B8D]/10 rounded-full mb-6">
+            <Award className="w-8 h-8 text-[#185B8D]" />
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1C1F2D] mb-4">
+            Leadership Team
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#185B8D] to-[#2A7EB3] mx-auto mb-6"></div>
+          <p className="max-w-4xl mx-auto text-lg sm:text-xl text-gray-600 leading-relaxed">
+            Meet our distinguished team of four visionary engineers from Jordan, revolutionizing 
+            solar infrastructure monitoring through cutting-edge drone technology and AI-powered solutions.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-4 gap-8">
+        {/* Founders Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
           {founders.map((founder, index) => (
-            <motion.div
+            <div
               key={founder.name}
-              className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{
-                opacity: 1,
-                scale: 1,
-                transition: {
-                  delay: index * 0.2,
-                  type: "spring",
-                  damping: 15,
-                  stiffness: 120,
-                },
-              }}
+              className={`group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 ${
+                hoveredCard === index ? 'transform -translate-y-2' : ''
+              }`}
+              onMouseEnter={() => setHoveredCard(index)}
+              onMouseLeave={() => setHoveredCard(null)}
             >
-              <div
-                className="h-64 bg-cover bg-center"
-                style={{
-                  backgroundImage: `url('${founder.image}')`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              />
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-[#185B8D] mb-1">
-                  {founder.name}
-                </h3>
-                <p className="text-sm text-gray-500 mb-3">
-                  {founder.position}
-                </p>
-                <p className="text-gray-600 mb-4 h-24 overflow-hidden">
-                  {founder.description}
-                </p>
+              {/* Profile Image */}
+              <div className="relative h-64 lg:h-72 overflow-hidden">
+                <img
+                  src={founder.image}
+                  alt={founder.name}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                
+                {/* Position Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="inline-flex items-center px-3 py-1 text-xs font-medium text-white bg-[#185B8D]/90 backdrop-blur-sm rounded-full">
+                    {founder.position}
+                  </span>
+                </div>
+              </div>
 
-                <div className="flex justify-between space-x-2">
+              {/* Content */}
+              <div className="p-6 lg:p-8">
+                {/* Name & Credentials */}
+                <div className="mb-4">
+                  <h3 className="text-xl lg:text-2xl font-bold text-[#1C1F2D] mb-1">
+                    {founder.name}
+                  </h3>
+                  <p className="text-sm font-medium text-[#185B8D] mb-2">
+                    {founder.credentials}
+                  </p>
+                  <div className="flex items-start gap-2 text-sm text-gray-600">
+                    <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                    <span>{founder.institution}</span>
+                  </div>
+                </div>
+
+                {/* Specialization */}
+                <div className="mb-4">
+                  <p className="text-sm font-medium text-gray-800 mb-2">
+                    {founder.specialization}
+                  </p>
+                  <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                    {founder.description}
+                  </p>
+                </div>
+
+                {/* Expertise Tags */}
+                <div className="mb-6">
+                  <div className="flex flex-wrap gap-1">
+                    {founder.expertise.slice(0, 3).map((skill, skillIndex) => (
+                      <span
+                        key={skillIndex}
+                        className="inline-block px-2 py-1 text-xs font-medium text-[#185B8D] bg-[#185B8D]/5 rounded-md"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                    {founder.expertise.length > 3 && (
+                      <span className="inline-block px-2 py-1 text-xs font-medium text-gray-500 bg-gray-100 rounded-md">
+                        +{founder.expertise.length - 3} more
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Contact Actions */}
+                <div className="flex gap-3">
                   <a
                     href={`mailto:${founder.email}`}
-                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-white bg-[#185B8D] hover:bg-[#2A7EB3] rounded-md transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-white bg-[#185B8D] hover:bg-[#1C6FA0] rounded-lg transition-colors duration-200"
+                    title={`Email ${founder.name}`}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-5 h-5"
-                    >
-                      <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-                      <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 6.04a1.5 1.5 0 001.572 0L22.5 6.908z" />
-                    </svg>
+                    <Mail className="w-4 h-4" />
                     <span>Email</span>
                   </a>
-
                   <a
                     href={founder.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-white bg-[#0A66C2] hover:bg-[#0D7ECA] rounded-md transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-white bg-[#0A66C2] hover:bg-[#004182] rounded-lg transition-colors duration-200"
+                    title={`View ${founder.name}'s LinkedIn profile`}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-5 h-5"
-                    >
-                      <path d="M20 3H4a1 1 0 00-1 1v16a1 1 0 001 1h16a1 1 0 001-1V4a1 1 0 00-1-1zm-9 14h-2v-5h2v5zm-1-6.3a1.16 1.16 0 111.15-1.16 1.16 1.16 0 01-1.15 1.16zm8 6.3h-2v-2.88c0-1.67-2-1.54-2 0V17h-2v-5h2v.8c.92-1.7 4-1.83 4 1.63V17z" />
-                    </svg>
+                    <Linkedin className="w-4 h-4" />
                     <span>LinkedIn</span>
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
+
+        {/* Company Stats */}
+        <div className="mt-20 pt-16 border-t border-gray-200">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-3xl lg:text-4xl font-bold text-[#185B8D] mb-2">15+</div>
+              <div className="text-sm lg:text-base text-gray-600">Years Combined Experience</div>
+            </div>
+            <div>
+              <div className="text-3xl lg:text-4xl font-bold text-[#185B8D] mb-2">3</div>
+              <div className="text-sm lg:text-base text-gray-600">Countries Represented</div>
+            </div>
+            <div>
+              <div className="text-3xl lg:text-4xl font-bold text-[#185B8D] mb-2">4</div>
+              <div className="text-sm lg:text-base text-gray-600">Technical Disciplines</div>
+            </div>
+            <div>
+              <div className="text-3xl lg:text-4xl font-bold text-[#185B8D] mb-2">1</div>
+              <div className="text-sm lg:text-base text-gray-600">MIT Innovation Award</div>
+            </div>
+          </div>
+        </div>
       </div>
-    </motion.div>
+
+      <style jsx>{`
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
+    </section>
   );
 };
 
