@@ -154,7 +154,7 @@ import Areej from "../assets/Areej.jpg";
 import Maram from "../assets/Maram.jpg";
 import Tala from "../assets/Tala.jpg";
 import Tasneem from "../assets/Tasneem.jpg";
-import Areej2 from "../assets/Areej2.png";
+import Areej2 from "../assets/areej2.png";
 
 const FoundersSection = () => {
   const founders = [
