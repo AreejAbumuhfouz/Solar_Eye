@@ -413,7 +413,7 @@ const FoundersSection = () => {
                 <p className="text-sm text-gray-500 mb-3">{founder.position}</p>
                 <p className="text-gray-600 mb-4 flex-1 overflow-hidden">{founder.description}</p>
 
-                <div className="mt-auto flex flex-col sm:flex-row justify-between gap-3">
+                {/* <div className="mt-auto flex flex-col sm:flex-row justify-between gap-3">
                   <a
                     href={`mailto:${founder.email}`}
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-white bg-[#185B8D] hover:bg-[#2A7EB3] rounded-md transition-colors"
@@ -450,7 +450,45 @@ const FoundersSection = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </div> */}
+                <div className="mt-4 flex flex-row justify-between gap-2">
+  <a
+    href={`mailto:${founder.email}`}
+    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-white bg-[#185B8D] hover:bg-[#2A7EB3] rounded-md transition-colors text-sm sm:text-base"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="w-5 h-5"
+    >
+      <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+      <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 6.04a1.5 1.5 0 001.572 0L22.5 6.908z" />
+    </svg>
+    <span>Email</span>
+  </a>
+
+  <a
+    href={founder.linkedin}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-white bg-[#0A66C2] hover:bg-[#0D7ECA] rounded-md transition-colors text-sm sm:text-base"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="w-5 h-5"
+    >
+      <path d="M20 3H4a1 1 0 00-1 1v16a1 1 0 001 1h16a1 1 0 001-1V4a1 1 0 00-1-1zm-9 14h-2v-5h2v5zm-1-6.3a1.16 1.16 0 111.15-1.16 1.16 1.16 0 01-1.15 1.16zm8 6.3h-2v-2.88c0-1.67-2-1.54-2 0V17h-2v-5h2v.8c.92-1.7 4-1.83 4 1.63V17z" />
+    </svg>
+    <span>LinkedIn</span>
+  </a>
+</div>
+</div>
+            </motion.div>
+          ))}
+        </div> 
       </div>
     </motion.section>
   );
