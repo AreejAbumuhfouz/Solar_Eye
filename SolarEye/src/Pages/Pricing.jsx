@@ -30,7 +30,7 @@ const Pricing = () => {
       popular: false,
       color: 'from-blue-500 to-blue-600',
       features: [
-        'Up to 50 solar panels',
+        'Up to 1 MW',
         'Basic AI anomaly detection',
         'Thermal imaging analysis',
         'Digital inspection report',
@@ -53,15 +53,15 @@ const Pricing = () => {
       popular: true,
       color: 'from-orange-500 to-red-500',
       features: [
-        'Up to 200 solar panels',
+        'Up to 5 MW',
         'Advanced AI diagnostics',
+        '⁠Predictive maintenance (Optional)',
         'Thermal + RGB imaging',
         'Comprehensive analysis report',
         'Performance optimization tips',
-        'Priority email & phone support',
+        '⁠Priority support',
         'Fast turnaround (24h)',
-        'Historical data tracking',
-        'Custom dashboards'
+        '⁠Custom reporting and analysis'
       ],
       notIncluded: [
         'Unlimited inspections',
@@ -71,23 +71,21 @@ const Pricing = () => {
     {
       id: 'enterprise',
       name: 'Enterprise Solution',
-      tagline: 'Complete solar farm management',
+      tagline: 'Complete Utility Installations',
       price: 1299,
       originalPrice: 1599,
       period: 'per inspection',
       popular: false,
       color: 'from-purple-500 to-indigo-600',
       features: [
-        'Unlimited solar panels',
-        'AI-powered predictive maintenance',
+        'Starting from 100 MW  ( for larger scale contact us for custom report)',
+        'Predictive maintenance (Optional)',
+        'Priority support',
+        'Custom reporting and analysis',
         'Multi-spectrum imaging analysis',
-        'Real-time monitoring integration',
-        'Custom reporting & analytics',
         'Dedicated account manager',
         'Same-day turnaround',
-        'API access for integration',
         'Training & onboarding',
-        'SLA guarantee',
         'Emergency response service'
       ],
       notIncluded: []
@@ -193,7 +191,8 @@ const containerVariants = {
         <div className="text-center mb-16 text-gray-800">
           <h3 className="text-4xl font-bold mb-4">Choose Your Solar Solution</h3>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            From small residential to large commercial installations, we have the perfect plan for your needs
+          
+‏From small residential and large commercial up to utility installations, we have the perfect plan for your need
           </p>
         </div>
 
