@@ -33,7 +33,6 @@ const Pricing = () => {
         'Up to 1 MW',
         'Basic AI anomaly detection',
         'Thermal imaging analysis',
-        'Custom reporting and analysis',
         'Digital inspection report',
         'Email support',
         'Standard turnaround (48h)'
@@ -41,7 +40,7 @@ const Pricing = () => {
       notIncluded: [
         'Predictive maintenance',
         'Priority support',
-        'Custom reporting'
+        'Custom reporting and analysis'
       ]
     },
     {
