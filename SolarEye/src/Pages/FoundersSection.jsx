@@ -154,6 +154,7 @@ import Areej from "../assets/Areej.jpg";
 import Maram from "../assets/Maram.jpg";
 import Tala from "../assets/Tala.jpg";
 import Tasneem from "../assets/Tasneem.jpg";
+import Areej2 from "../assets/Areej2.png";
 
 const FoundersSection = () => {
   const founders = [
@@ -190,7 +191,7 @@ const FoundersSection = () => {
       position: "Head of Programming",
       description:
         "Full Stack Developer specializing in e-commerce platforms, secure authentication, and database management.",
-      image: Areej,
+      image: Areej2,
       email: "areejabumahfouz@gmail.com",
       linkedin: "www.linkedin.com/in/areejabumuhfouz",
     },
