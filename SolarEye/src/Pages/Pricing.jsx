@@ -78,7 +78,7 @@ const Pricing = () => {
       popular: false,
       color: 'from-purple-500 to-indigo-600',
       features: [
-        'Starting from 100 MW  (Contact us for customized large-scale reporti)',
+        'Starting from 100 MW  (Contact us for customized large-scale reporting)',
         'Predictive maintenance (Optional)',
         'Priority support',
         'Custom reporting and analysis',
