@@ -87,9 +87,9 @@ const Pricing = () => {
         'Dedicated account manager',
         'Same-day turnaround',
         'Training & onboarding',
-        'Emergency response service'
-        'SLA'
-        'Real-time monitoring '
+        'Emergency response service',
+        'SLA',
+        'Real-time monitoring ',
         'API access '
       ],
       notIncluded: []
