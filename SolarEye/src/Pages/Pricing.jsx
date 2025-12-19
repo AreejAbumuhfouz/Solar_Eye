@@ -33,6 +33,7 @@ const Pricing = () => {
         'Up to 1 MW',
         'Basic AI anomaly detection',
         'Thermal imaging analysis',
+        'Custom reporting and analysis',
         'Digital inspection report',
         'Email support',
         'Standard turnaround (48h)'
@@ -87,6 +88,9 @@ const Pricing = () => {
         'Same-day turnaround',
         'Training & onboarding',
         'Emergency response service'
+        'SLA'
+        'Real-time monitoring '
+        'API access '
       ],
       notIncluded: []
     }
