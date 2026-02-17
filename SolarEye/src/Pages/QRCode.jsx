@@ -747,7 +747,7 @@ const QRPage = () => {
                 </div>
 
                 <motion.a
-                  href="/contact"
+                  href="/contactus"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
                   className="relative z-10 shrink-0 flex items-center gap-2 px-8 py-4 rounded-2xl text-white font-black text-sm whitespace-nowrap"
