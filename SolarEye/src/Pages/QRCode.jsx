@@ -146,12 +146,12 @@ const CONTACTS = [
 ];
 
 /* ─── Stats ─── */
-const STATS = [
-  { value: "500+", label: "Solar Farms Inspected" },
-  { value: "3 GW", label: "Capacity Monitored" },
-  { value: "4",    label: "Global Offices" },
-  { value: "24/7", label: "AI Monitoring" },
-];
+// const STATS = [
+//   { value: "500+", label: "Solar Farms Inspected" },
+//   { value: "3 GW", label: "Capacity Monitored" },
+//   { value: "4",    label: "Global Offices" },
+//   { value: "24/7", label: "AI Monitoring" },
+// ];
 
 /* ─── QR helper (free, no package) ─── */
 const qrSrc = (url, size = 240) =>
@@ -682,7 +682,7 @@ const QRPage = () => {
           </AnimatePresence>
 
           {/* ─── STATS ─── */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -713,7 +713,7 @@ const QRPage = () => {
                 <p className="text-gray-500 text-xs mt-1.5 leading-snug">{label}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </motion.div> */}
 
           {/* ─── CTA BANNER ─── */}
           <motion.div
