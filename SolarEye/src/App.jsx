@@ -10,6 +10,7 @@ import SolarEyeDashboard from "../src/Dashboard/SolarEye";
 import NotFoundPage from "../src/components/404Pgae";
 import Pricing from "./Pages/Pricing";
 import Services  from "./Pages/Services";
+import QRCodePage  from "./Pages/QRCode";
 function App() {
   return (
     <Router>
@@ -22,6 +23,7 @@ function App() {
         <Route path="/dashboard" element={<SolarEyeDashboard />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/qr" element={<QRCodePage />} />
 
         <Route path="*" element={<NotFoundPage/>} />
       </Routes>
