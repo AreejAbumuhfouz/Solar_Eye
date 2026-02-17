@@ -159,7 +159,7 @@ const qrSrc = (url, size = 240) =>
     url
   )}&size=${size}x${size}&ecc=H&color=226F9E&bgcolor=ffffff&qzone=2&format=png`;
 
-const PAGE_URL = "https://solareye.info/contact";
+const PAGE_URL = "https://solareye.info/contactus";
 
 /* ═══════════════════════════════════════════
    SUB-COMPONENTS
