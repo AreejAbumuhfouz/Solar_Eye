@@ -403,7 +403,7 @@ const QRPage = () => {
             transition={{ delay: 0.25, duration: 0.6 }}
             className="text-gray-400 text-lg sm:text-xl leading-relaxed max-w-lg mx-auto"
           >
-            You found us. Reach our team instantly — tap any link or scan the QR code below.
+            You found us. Reach our team instantly, tap any link or scan the QR code below.
           </motion.p>
 
           {/* Scroll cue */}
