@@ -150,10 +150,10 @@ const ContactUs = () => {
                     <div>
                       <h3 className="font-semibold text-lg">Our Offices</h3>
                       <p className="text-gray-300 mt-1">
-                        <span className="font-medium">Head Office:</span> Dubai
+                        <span className="font-medium">Head Office:</span> Jordan 
                       </p>
                       <p className="text-gray-300">
-                        <span className="font-medium">Marketing Offices:</span> Germany, Qatar, and Jordan
+                        <span className="font-medium">Marketing Offices:</span> EU (Germany) , ME (Qatar and UAE)
                       </p>
                     </div>
                   </div>
