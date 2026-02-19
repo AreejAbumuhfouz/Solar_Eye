@@ -153,7 +153,7 @@ const UpcomingEventsSection = () => {
                 </div>
 
                 <a
-                  href="https://www.changenow-summit.com/"
+                  href="https://www.changenow.world/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="self-start md:self-center inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#185B8D] to-[#2A7EB3] hover:from-[#2A7EB3] hover:to-[#3a9ed4] text-white font-bold text-sm transition-all duration-300 shadow-lg shadow-[#185B8D]/30 hover:shadow-[#185B8D]/50 hover:-translate-y-0.5"
