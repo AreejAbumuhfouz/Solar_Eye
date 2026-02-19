@@ -75,7 +75,7 @@ const Footer = () => {
     "AI-Powered Solar Inspections",
     "Real-Time Performance Monitoring",
     "Predictive Maintenance Solutions",
-    "AAdvanced Analytics & Reporting",
+    "Advanced Analytics & Reporting",
     "Solar Optimization Consulting"
   ];
   
