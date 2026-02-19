@@ -236,12 +236,12 @@ const Footer = () => {
                 {
   icon: MapPin,
   iconColor: "text-red-500",
-  content: "Head Office: Dubai"
+  content: "Head Office: Jordan"
 },
 {
   icon: MapPin,
   iconColor: "text-red-500",
-  content: "Marketing Offices: Germany, Qatar, and Jordan"
+  content: "Marketing Offices: EU (Germany) , ME (Qatar and UAE)"
 }
 
               ].map((contact, index) => (
