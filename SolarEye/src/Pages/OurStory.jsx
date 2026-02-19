@@ -9,6 +9,7 @@ import JourneyMilestones from './MileStone';
 import OurVision from './OurVision';
 import ShaheenFooter from '../components/Footer';
 import FoundersSection from './FoundersSection';
+import UpcomingEventsSection from './Events';
 import {Book} from 'lucide-react';
 const OurStory = () => {
   const ref = useRef(null);
@@ -84,6 +85,7 @@ const OurStory = () => {
         <OurVision />
       </div>
       <FoundersSection/>
+      <UpcomingEventsSection/>
 
       {/* Milestones Section */}
       <JourneyMilestones />
