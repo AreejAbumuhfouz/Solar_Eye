@@ -86,7 +86,7 @@ const OurStory = () => {
         <OurVision />
       </div>
       <FoundersSection/>
-      <UpcomingEventsSection/>
+      {/* <UpcomingEventsSection/> */}
       <UpcomingEventsSection2/>
 
       {/* Milestones Section */}
